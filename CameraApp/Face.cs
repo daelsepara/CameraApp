@@ -1,10 +1,11 @@
-﻿using Emgu.CV;
+using Emgu.CV;
 using Emgu.CV.Structure;
 using Gdk;
+using System;
 
 public static class Face
 {
-    public static void Detetct(OpenCV cv, Pixbuf pixbuf, Select selection)
+    public static void Detect(OpenCV cv, Pixbuf pixbuf, Select selection, double ScaleX, double ScaleY)
     {
         if (pixbuf != null)
         {
@@ -23,7 +24,12 @@ public static class Face
                 {
                     foreach (var face in faces)
                     {
-                        selection.Add(face.Left, face.Top, face.Right, face.Bottom);
+                        var X0 = Convert.ToInt32(ScaleX * face.X);
+                        var Y0 = Convert.ToInt32(ScaleY * face.Y);
+                        var X1 = Convert.ToInt32(ScaleX * (face.X + face.Width - 1));
+                        var Y1 = Convert.ToInt32(ScaleY * (face.Y + face.Height - 1));
+
+                        selection.Add(X0, Y0, X1, Y1);
                     }
                 }
 

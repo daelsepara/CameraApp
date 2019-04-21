@@ -6,7 +6,7 @@
   <import>
     <widget-library name="../bin/Release/CameraApp.exe" internal="true" />
   </import>
-  <widget class="Gtk.Window" id="MainWindow" design-size="1139 847">
+  <widget class="Gtk.Window" id="MainWindow" design-size="1139 942">
     <property name="MemberName" />
     <property name="WidthRequest">1024</property>
     <property name="HeightRequest">768</property>
@@ -31,7 +31,7 @@
             <property name="WidthRequest">984</property>
             <property name="HeightRequest">728</property>
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">0</property>
+            <property name="CurrentPage">2</property>
             <signal name="SwitchPage" handler="OnMainNoteBookSwitchPage" />
             <child>
               <widget class="Gtk.Fixed" id="cameraLayout">
@@ -2111,6 +2111,20 @@
                           </widget>
                           <packing>
                             <property name="X">270</property>
+                            <property name="Y">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Button" id="facesButton">
+                            <property name="MemberName" />
+                            <property name="Type">TextOnly</property>
+                            <property name="Label" translatable="yes">Faces</property>
+                            <property name="UseUnderline">True</property>
+                            <property name="FocusOnClick">False</property>
+                            <signal name="Clicked" handler="OnFacesButtonClicked" />
+                          </widget>
+                          <packing>
+                            <property name="X">180</property>
                             <property name="Y">5</property>
                           </packing>
                         </child>

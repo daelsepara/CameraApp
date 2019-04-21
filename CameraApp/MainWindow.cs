@@ -1383,6 +1383,20 @@ public partial class MainWindow : Gtk.Window
         }
     }
 
+    protected void OnFacesButtonClicked(object sender, EventArgs e)
+    {
+        if (ControlsActive)
+        {
+            Face.Detect(
+                opencv,
+                OriginalImage,
+                GtkSelection.Selection,
+                Convert.ToDouble(cameraImage.WidthRequest) / OriginalImage.Width,
+                Convert.ToDouble(cameraImage.HeightRequest) / OriginalImage.Height
+            );
+        }
+    }
+
     protected void OnSaveProcessedImageButtonClicked(object o, EventArgs e)
     {
         if (ControlsActive)

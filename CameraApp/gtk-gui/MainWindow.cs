@@ -315,6 +315,8 @@ public partial class MainWindow
 
 	private global::Gtk.Button saveBlobsButton;
 
+	private global::Gtk.Button facesButton;
+
 	private global::Gtk.Label DetectLabel;
 
 	private global::Gtk.Fixed preProcessLayout;
@@ -414,7 +416,7 @@ public partial class MainWindow
 		this.mainNoteBook.HeightRequest = 728;
 		this.mainNoteBook.CanFocus = true;
 		this.mainNoteBook.Name = "mainNoteBook";
-		this.mainNoteBook.CurrentPage = 0;
+		this.mainNoteBook.CurrentPage = 2;
 		// Container child mainNoteBook.Gtk.Notebook+NotebookChild
 		this.cameraLayout = new global::Gtk.Fixed();
 		this.cameraLayout.WidthRequest = 984;
@@ -1962,6 +1964,16 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w143 = ((global::Gtk.Fixed.FixedChild)(this.detectLayout[this.saveBlobsButton]));
 		w143.X = 270;
 		w143.Y = 5;
+		// Container child detectLayout.Gtk.Fixed+FixedChild
+		this.facesButton = new global::Gtk.Button();
+		this.facesButton.Name = "facesButton";
+		this.facesButton.UseUnderline = true;
+		this.facesButton.FocusOnClick = false;
+		this.facesButton.Label = global::Mono.Unix.Catalog.GetString("Faces");
+		this.detectLayout.Add(this.facesButton);
+		global::Gtk.Fixed.FixedChild w144 = ((global::Gtk.Fixed.FixedChild)(this.detectLayout[this.facesButton]));
+		w144.X = 180;
+		w144.Y = 5;
 		this.DetectLayout.Add(this.detectLayout);
 		// Notebook tab
 		this.DetectLabel = new global::Gtk.Label();
@@ -1981,9 +1993,9 @@ public partial class MainWindow
 		this.DownUpSample.UseUnderline = true;
 		this.DownUpSample.FocusOnClick = false;
 		this.preProcessLayout.Add(this.DownUpSample);
-		global::Gtk.Fixed.FixedChild w145 = ((global::Gtk.Fixed.FixedChild)(this.preProcessLayout[this.DownUpSample]));
-		w145.X = 5;
-		w145.Y = 5;
+		global::Gtk.Fixed.FixedChild w146 = ((global::Gtk.Fixed.FixedChild)(this.preProcessLayout[this.DownUpSample]));
+		w146.X = 5;
+		w146.Y = 5;
 		// Container child preProcessLayout.Gtk.Fixed+FixedChild
 		this.InvertGray = new global::Gtk.CheckButton();
 		this.InvertGray.CanFocus = true;
@@ -1992,9 +2004,9 @@ public partial class MainWindow
 		this.InvertGray.DrawIndicator = true;
 		this.InvertGray.UseUnderline = true;
 		this.preProcessLayout.Add(this.InvertGray);
-		global::Gtk.Fixed.FixedChild w146 = ((global::Gtk.Fixed.FixedChild)(this.preProcessLayout[this.InvertGray]));
-		w146.X = 5;
-		w146.Y = 35;
+		global::Gtk.Fixed.FixedChild w147 = ((global::Gtk.Fixed.FixedChild)(this.preProcessLayout[this.InvertGray]));
+		w147.X = 5;
+		w147.Y = 35;
 		// Container child preProcessLayout.Gtk.Fixed+FixedChild
 		this.SubtractBackground = new global::Gtk.CheckButton();
 		this.SubtractBackground.Name = "SubtractBackground";
@@ -2003,9 +2015,9 @@ public partial class MainWindow
 		this.SubtractBackground.UseUnderline = true;
 		this.SubtractBackground.FocusOnClick = false;
 		this.preProcessLayout.Add(this.SubtractBackground);
-		global::Gtk.Fixed.FixedChild w147 = ((global::Gtk.Fixed.FixedChild)(this.preProcessLayout[this.SubtractBackground]));
-		w147.X = 170;
-		w147.Y = 5;
+		global::Gtk.Fixed.FixedChild w148 = ((global::Gtk.Fixed.FixedChild)(this.preProcessLayout[this.SubtractBackground]));
+		w148.X = 170;
+		w148.Y = 5;
 		// Container child preProcessLayout.Gtk.Fixed+FixedChild
 		this.Normalize = new global::Gtk.CheckButton();
 		this.Normalize.Name = "Normalize";
@@ -2014,12 +2026,12 @@ public partial class MainWindow
 		this.Normalize.UseUnderline = true;
 		this.Normalize.FocusOnClick = false;
 		this.preProcessLayout.Add(this.Normalize);
-		global::Gtk.Fixed.FixedChild w148 = ((global::Gtk.Fixed.FixedChild)(this.preProcessLayout[this.Normalize]));
-		w148.X = 170;
-		w148.Y = 30;
+		global::Gtk.Fixed.FixedChild w149 = ((global::Gtk.Fixed.FixedChild)(this.preProcessLayout[this.Normalize]));
+		w149.X = 170;
+		w149.Y = 30;
 		this.DetectLayout.Add(this.preProcessLayout);
-		global::Gtk.Notebook.NotebookChild w149 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.preProcessLayout]));
-		w149.Position = 1;
+		global::Gtk.Notebook.NotebookChild w150 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.preProcessLayout]));
+		w150.Position = 1;
 		// Notebook tab
 		this.DetectPreProcessLabel = new global::Gtk.Label();
 		this.DetectPreProcessLabel.Name = "DetectPreProcessLabel";
@@ -2039,34 +2051,34 @@ public partial class MainWindow
 		this.GaussianFilter.UseUnderline = true;
 		this.GaussianFilter.FocusOnClick = false;
 		this.gaussianFilterLayout.Add(this.GaussianFilter);
-		global::Gtk.Fixed.FixedChild w150 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilter]));
-		w150.X = 5;
-		w150.Y = 5;
+		global::Gtk.Fixed.FixedChild w151 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilter]));
+		w151.X = 5;
+		w151.Y = 5;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.gaussianFilterKernelLabel = new global::Gtk.Label();
 		this.gaussianFilterKernelLabel.Name = "gaussianFilterKernelLabel";
 		this.gaussianFilterKernelLabel.LabelProp = global::Mono.Unix.Catalog.GetString("<b>Kernel</b>");
 		this.gaussianFilterKernelLabel.UseMarkup = true;
 		this.gaussianFilterLayout.Add(this.gaussianFilterKernelLabel);
-		global::Gtk.Fixed.FixedChild w151 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.gaussianFilterKernelLabel]));
-		w151.X = 130;
-		w151.Y = 5;
+		global::Gtk.Fixed.FixedChild w152 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.gaussianFilterKernelLabel]));
+		w152.X = 130;
+		w152.Y = 5;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.gaussianFilterWidthLabel = new global::Gtk.Label();
 		this.gaussianFilterWidthLabel.Name = "gaussianFilterWidthLabel";
 		this.gaussianFilterWidthLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Width");
 		this.gaussianFilterLayout.Add(this.gaussianFilterWidthLabel);
-		global::Gtk.Fixed.FixedChild w152 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.gaussianFilterWidthLabel]));
-		w152.X = 130;
-		w152.Y = 30;
+		global::Gtk.Fixed.FixedChild w153 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.gaussianFilterWidthLabel]));
+		w153.X = 130;
+		w153.Y = 30;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.gaussianFilterHeightLabel = new global::Gtk.Label();
 		this.gaussianFilterHeightLabel.Name = "gaussianFilterHeightLabel";
 		this.gaussianFilterHeightLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Height");
 		this.gaussianFilterLayout.Add(this.gaussianFilterHeightLabel);
-		global::Gtk.Fixed.FixedChild w153 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.gaussianFilterHeightLabel]));
-		w153.X = 130;
-		w153.Y = 60;
+		global::Gtk.Fixed.FixedChild w154 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.gaussianFilterHeightLabel]));
+		w154.X = 130;
+		w154.Y = 60;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.GaussianFilterWidth = new global::Gtk.SpinButton(0D, 100D, 1D);
 		this.GaussianFilterWidth.Name = "GaussianFilterWidth";
@@ -2074,9 +2086,9 @@ public partial class MainWindow
 		this.GaussianFilterWidth.ClimbRate = 1D;
 		this.GaussianFilterWidth.Numeric = true;
 		this.gaussianFilterLayout.Add(this.GaussianFilterWidth);
-		global::Gtk.Fixed.FixedChild w154 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterWidth]));
-		w154.X = 175;
-		w154.Y = 25;
+		global::Gtk.Fixed.FixedChild w155 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterWidth]));
+		w155.X = 175;
+		w155.Y = 25;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.GaussianFilterHeight = new global::Gtk.SpinButton(0D, 100D, 1D);
 		this.GaussianFilterHeight.Name = "GaussianFilterHeight";
@@ -2084,34 +2096,34 @@ public partial class MainWindow
 		this.GaussianFilterHeight.ClimbRate = 1D;
 		this.GaussianFilterHeight.Numeric = true;
 		this.gaussianFilterLayout.Add(this.GaussianFilterHeight);
-		global::Gtk.Fixed.FixedChild w155 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterHeight]));
-		w155.X = 175;
-		w155.Y = 55;
+		global::Gtk.Fixed.FixedChild w156 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterHeight]));
+		w156.X = 175;
+		w156.Y = 55;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.GaussianFilterStdevLabel = new global::Gtk.Label();
 		this.GaussianFilterStdevLabel.Name = "GaussianFilterStdevLabel";
 		this.GaussianFilterStdevLabel.LabelProp = global::Mono.Unix.Catalog.GetString("<b>Standard Deviation</b>");
 		this.GaussianFilterStdevLabel.UseMarkup = true;
 		this.gaussianFilterLayout.Add(this.GaussianFilterStdevLabel);
-		global::Gtk.Fixed.FixedChild w156 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevLabel]));
-		w156.X = 250;
-		w156.Y = 5;
+		global::Gtk.Fixed.FixedChild w157 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevLabel]));
+		w157.X = 250;
+		w157.Y = 5;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.GaussianFilterStdevXLabel = new global::Gtk.Label();
 		this.GaussianFilterStdevXLabel.Name = "GaussianFilterStdevXLabel";
 		this.GaussianFilterStdevXLabel.LabelProp = global::Mono.Unix.Catalog.GetString("X");
 		this.gaussianFilterLayout.Add(this.GaussianFilterStdevXLabel);
-		global::Gtk.Fixed.FixedChild w157 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevXLabel]));
-		w157.X = 250;
-		w157.Y = 30;
+		global::Gtk.Fixed.FixedChild w158 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevXLabel]));
+		w158.X = 250;
+		w158.Y = 30;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.GaussianFilterStdevYLabel = new global::Gtk.Label();
 		this.GaussianFilterStdevYLabel.Name = "GaussianFilterStdevYLabel";
 		this.GaussianFilterStdevYLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Y");
 		this.gaussianFilterLayout.Add(this.GaussianFilterStdevYLabel);
-		global::Gtk.Fixed.FixedChild w158 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevYLabel]));
-		w158.X = 250;
-		w158.Y = 60;
+		global::Gtk.Fixed.FixedChild w159 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevYLabel]));
+		w159.X = 250;
+		w159.Y = 60;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.GaussianFilterStdevX = new global::Gtk.SpinButton(0D, 100D, 1D);
 		this.GaussianFilterStdevX.Name = "GaussianFilterStdevX";
@@ -2120,9 +2132,9 @@ public partial class MainWindow
 		this.GaussianFilterStdevX.Digits = ((uint)(2));
 		this.GaussianFilterStdevX.Numeric = true;
 		this.gaussianFilterLayout.Add(this.GaussianFilterStdevX);
-		global::Gtk.Fixed.FixedChild w159 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevX]));
-		w159.X = 270;
-		w159.Y = 25;
+		global::Gtk.Fixed.FixedChild w160 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevX]));
+		w160.X = 270;
+		w160.Y = 25;
 		// Container child gaussianFilterLayout.Gtk.Fixed+FixedChild
 		this.GaussianFilterStdevY = new global::Gtk.SpinButton(0D, 100D, 1D);
 		this.GaussianFilterStdevY.Name = "GaussianFilterStdevY";
@@ -2131,12 +2143,12 @@ public partial class MainWindow
 		this.GaussianFilterStdevY.Digits = ((uint)(2));
 		this.GaussianFilterStdevY.Numeric = true;
 		this.gaussianFilterLayout.Add(this.GaussianFilterStdevY);
-		global::Gtk.Fixed.FixedChild w160 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevY]));
-		w160.X = 270;
-		w160.Y = 55;
+		global::Gtk.Fixed.FixedChild w161 = ((global::Gtk.Fixed.FixedChild)(this.gaussianFilterLayout[this.GaussianFilterStdevY]));
+		w161.X = 270;
+		w161.Y = 55;
 		this.DetectLayout.Add(this.gaussianFilterLayout);
-		global::Gtk.Notebook.NotebookChild w161 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.gaussianFilterLayout]));
-		w161.Position = 2;
+		global::Gtk.Notebook.NotebookChild w162 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.gaussianFilterLayout]));
+		w162.Position = 2;
 		// Notebook tab
 		this.GuassianFilterLabel = new global::Gtk.Label();
 		this.GuassianFilterLabel.Name = "GuassianFilterLabel";
@@ -2153,9 +2165,9 @@ public partial class MainWindow
 		this.MarkerSizeLabel.LabelProp = global::Mono.Unix.Catalog.GetString("<b>Size</b>");
 		this.MarkerSizeLabel.UseMarkup = true;
 		this.markersLayout.Add(this.MarkerSizeLabel);
-		global::Gtk.Fixed.FixedChild w162 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerSizeLabel]));
-		w162.X = 5;
-		w162.Y = 5;
+		global::Gtk.Fixed.FixedChild w163 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerSizeLabel]));
+		w163.X = 5;
+		w163.Y = 5;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.spinbutton13 = new global::Gtk.SpinButton(0D, 1000D, 1D);
 		this.spinbutton13.CanFocus = true;
@@ -2164,55 +2176,55 @@ public partial class MainWindow
 		this.spinbutton13.ClimbRate = 1D;
 		this.spinbutton13.Numeric = true;
 		this.markersLayout.Add(this.spinbutton13);
-		global::Gtk.Fixed.FixedChild w163 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.spinbutton13]));
-		w163.X = 5;
-		w163.Y = 25;
+		global::Gtk.Fixed.FixedChild w164 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.spinbutton13]));
+		w164.X = 5;
+		w164.Y = 25;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.ColorsLabel = new global::Gtk.Label();
 		this.ColorsLabel.Name = "ColorsLabel";
 		this.ColorsLabel.LabelProp = global::Mono.Unix.Catalog.GetString("<b>Colors</b>");
 		this.ColorsLabel.UseMarkup = true;
 		this.markersLayout.Add(this.ColorsLabel);
-		global::Gtk.Fixed.FixedChild w164 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.ColorsLabel]));
-		w164.X = 100;
-		w164.Y = 5;
+		global::Gtk.Fixed.FixedChild w165 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.ColorsLabel]));
+		w165.X = 100;
+		w165.Y = 5;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.SelectedColorLabel = new global::Gtk.Label();
 		this.SelectedColorLabel.Name = "SelectedColorLabel";
 		this.SelectedColorLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Selected");
 		this.markersLayout.Add(this.SelectedColorLabel);
-		global::Gtk.Fixed.FixedChild w165 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.SelectedColorLabel]));
-		w165.X = 100;
-		w165.Y = 55;
+		global::Gtk.Fixed.FixedChild w166 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.SelectedColorLabel]));
+		w166.X = 100;
+		w166.Y = 55;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.MarkerColorLabel = new global::Gtk.Label();
 		this.MarkerColorLabel.Name = "MarkerColorLabel";
 		this.MarkerColorLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Default");
 		this.markersLayout.Add(this.MarkerColorLabel);
-		global::Gtk.Fixed.FixedChild w166 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerColorLabel]));
-		w166.X = 100;
-		w166.Y = 25;
+		global::Gtk.Fixed.FixedChild w167 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerColorLabel]));
+		w167.X = 100;
+		w167.Y = 25;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.MarkerColor = new global::Gtk.ColorButton();
 		this.MarkerColor.Events = ((global::Gdk.EventMask)(784));
 		this.MarkerColor.Name = "MarkerColor";
 		this.MarkerColor.FocusOnClick = false;
 		this.markersLayout.Add(this.MarkerColor);
-		global::Gtk.Fixed.FixedChild w167 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerColor]));
-		w167.X = 165;
-		w167.Y = 15;
+		global::Gtk.Fixed.FixedChild w168 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerColor]));
+		w168.X = 165;
+		w168.Y = 15;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.SelectedColor = new global::Gtk.ColorButton();
 		this.SelectedColor.Events = ((global::Gdk.EventMask)(784));
 		this.SelectedColor.Name = "SelectedColor";
 		this.SelectedColor.FocusOnClick = false;
 		this.markersLayout.Add(this.SelectedColor);
-		global::Gtk.Fixed.FixedChild w168 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.SelectedColor]));
-		w168.X = 165;
-		w168.Y = 50;
+		global::Gtk.Fixed.FixedChild w169 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.SelectedColor]));
+		w169.X = 165;
+		w169.Y = 50;
 		this.DetectLayout.Add(this.markersLayout);
-		global::Gtk.Notebook.NotebookChild w169 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.markersLayout]));
-		w169.Position = 3;
+		global::Gtk.Notebook.NotebookChild w170 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.markersLayout]));
+		w170.Position = 3;
 		// Notebook tab
 		this.MarkersLabel = new global::Gtk.Label();
 		this.MarkersLabel.Name = "MarkersLabel";
@@ -2230,9 +2242,9 @@ public partial class MainWindow
 		this.loadImageSettingsButton.FocusOnClick = false;
 		this.loadImageSettingsButton.Label = global::Mono.Unix.Catalog.GetString("Load Settings");
 		this.imageSettingsLayout.Add(this.loadImageSettingsButton);
-		global::Gtk.Fixed.FixedChild w170 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.loadImageSettingsButton]));
-		w170.X = 5;
-		w170.Y = 5;
+		global::Gtk.Fixed.FixedChild w171 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.loadImageSettingsButton]));
+		w171.X = 5;
+		w171.Y = 5;
 		// Container child imageSettingsLayout.Gtk.Fixed+FixedChild
 		this.saveImageSettingsButton = new global::Gtk.Button();
 		this.saveImageSettingsButton.Name = "saveImageSettingsButton";
@@ -2240,20 +2252,20 @@ public partial class MainWindow
 		this.saveImageSettingsButton.FocusOnClick = false;
 		this.saveImageSettingsButton.Label = global::Mono.Unix.Catalog.GetString("Save Settings");
 		this.imageSettingsLayout.Add(this.saveImageSettingsButton);
-		global::Gtk.Fixed.FixedChild w171 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.saveImageSettingsButton]));
-		w171.X = 5;
-		w171.Y = 35;
+		global::Gtk.Fixed.FixedChild w172 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.saveImageSettingsButton]));
+		w172.X = 5;
+		w172.Y = 35;
 		// Container child imageSettingsLayout.Gtk.Fixed+FixedChild
 		this.detectSettingsLabel = new global::Gtk.Label();
 		this.detectSettingsLabel.Name = "detectSettingsLabel";
 		this.detectSettingsLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Load / Save detection settings");
 		this.imageSettingsLayout.Add(this.detectSettingsLabel);
-		global::Gtk.Fixed.FixedChild w172 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.detectSettingsLabel]));
-		w172.X = 7;
-		w172.Y = 68;
+		global::Gtk.Fixed.FixedChild w173 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.detectSettingsLabel]));
+		w173.X = 7;
+		w173.Y = 68;
 		this.DetectLayout.Add(this.imageSettingsLayout);
-		global::Gtk.Notebook.NotebookChild w173 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.imageSettingsLayout]));
-		w173.Position = 4;
+		global::Gtk.Notebook.NotebookChild w174 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.imageSettingsLayout]));
+		w174.Position = 4;
 		// Notebook tab
 		this.ImageSettingsLabel = new global::Gtk.Label();
 		this.ImageSettingsLabel.Name = "ImageSettingsLabel";
@@ -2261,17 +2273,17 @@ public partial class MainWindow
 		this.DetectLayout.SetTabLabel(this.imageSettingsLayout, this.ImageSettingsLabel);
 		this.ImageSettingsLabel.ShowAll();
 		this.imageDetectLayout.Add(this.DetectLayout);
-		global::Gtk.Fixed.FixedChild w174 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.DetectLayout]));
-		w174.X = 500;
-		w174.Y = 550;
+		global::Gtk.Fixed.FixedChild w175 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.DetectLayout]));
+		w175.X = 500;
+		w175.Y = 550;
 		// Container child imageDetectLayout.Gtk.Fixed+FixedChild
 		this.dpLabel = new global::Gtk.Label();
 		this.dpLabel.Name = "dpLabel";
 		this.dpLabel.LabelProp = global::Mono.Unix.Catalog.GetString("dp");
 		this.imageDetectLayout.Add(this.dpLabel);
-		global::Gtk.Fixed.FixedChild w175 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.dpLabel]));
-		w175.X = 380;
-		w175.Y = 645;
+		global::Gtk.Fixed.FixedChild w176 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.dpLabel]));
+		w176.X = 380;
+		w176.Y = 645;
 		// Container child imageDetectLayout.Gtk.Fixed+FixedChild
 		this.dp = new global::Gtk.SpinButton(0D, 100D, 1D);
 		this.dp.Name = "dp";
@@ -2280,12 +2292,12 @@ public partial class MainWindow
 		this.dp.Digits = ((uint)(2));
 		this.dp.Numeric = true;
 		this.imageDetectLayout.Add(this.dp);
-		global::Gtk.Fixed.FixedChild w176 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.dp]));
-		w176.X = 405;
-		w176.Y = 640;
+		global::Gtk.Fixed.FixedChild w177 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.dp]));
+		w177.X = 405;
+		w177.Y = 640;
 		this.mainNoteBook.Add(this.imageDetectLayout);
-		global::Gtk.Notebook.NotebookChild w177 = ((global::Gtk.Notebook.NotebookChild)(this.mainNoteBook[this.imageDetectLayout]));
-		w177.Position = 2;
+		global::Gtk.Notebook.NotebookChild w178 = ((global::Gtk.Notebook.NotebookChild)(this.mainNoteBook[this.imageDetectLayout]));
+		w178.Position = 2;
 		// Notebook tab
 		this.ImageDetectLabel = new global::Gtk.Label();
 		this.ImageDetectLabel.Name = "ImageDetectLabel";
@@ -2293,9 +2305,9 @@ public partial class MainWindow
 		this.mainNoteBook.SetTabLabel(this.imageDetectLayout, this.ImageDetectLabel);
 		this.ImageDetectLabel.ShowAll();
 		this.mainLayout.Add(this.mainNoteBook);
-		global::Gtk.Fixed.FixedChild w178 = ((global::Gtk.Fixed.FixedChild)(this.mainLayout[this.mainNoteBook]));
-		w178.X = 20;
-		w178.Y = 20;
+		global::Gtk.Fixed.FixedChild w179 = ((global::Gtk.Fixed.FixedChild)(this.mainLayout[this.mainNoteBook]));
+		w179.X = 20;
+		w179.Y = 20;
 		this.Add(this.mainLayout);
 		if ((this.Child != null))
 		{
@@ -2397,6 +2409,7 @@ public partial class MainWindow
 		this.simpleBlobsButton.Clicked += new global::System.EventHandler(this.OnSimpleBlobsButtonClicked);
 		this.saveProcessedImageButton.Clicked += new global::System.EventHandler(this.OnSaveProcessedImageButtonClicked);
 		this.saveBlobsButton.Clicked += new global::System.EventHandler(this.OnSaveBlobsButtonClicked);
+		this.facesButton.Clicked += new global::System.EventHandler(this.OnFacesButtonClicked);
 		this.DownUpSample.Toggled += new global::System.EventHandler(this.UpdateDetectorSettings);
 		this.InvertGray.Toggled += new global::System.EventHandler(this.UpdateDetectorSettings);
 		this.SubtractBackground.Toggled += new global::System.EventHandler(this.UpdateDetectorSettings);
