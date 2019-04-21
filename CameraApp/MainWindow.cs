@@ -1471,7 +1471,7 @@ public partial class MainWindow : Gtk.Window
                             if (OriginalImage != null)
                             {
                                 OriginalImage.CopyArea(left, top, width, height, area, 0, 0);
-                                area.Save(String.Format("{0}/{1}-{2}.png", ImageSaver.CurrentFolder, basefile, index.ToString("D4")), "png");
+                                area.Save(string.Format("{0}/{1}-{2}.png", ImageSaver.CurrentFolder, basefile, index.ToString("D4")), "png");
                             }
                         }
 

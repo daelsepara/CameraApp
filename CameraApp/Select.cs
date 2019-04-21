@@ -316,7 +316,7 @@ public class Select
         Update();
     }
 
-    public String GetEllipses()
+    public string GetEllipses()
     {
         var sb = new StringBuilder();
 
@@ -338,7 +338,7 @@ public class Select
         return sb.ToString();
     }
 
-    public String GetBoxes()
+    public string GetBoxes()
     {
         var sb = new StringBuilder();
 
@@ -359,7 +359,7 @@ public class Select
         return sb.ToString();
     }
 
-    public override String ToString()
+    public override string ToString()
     {
         var sb = new StringBuilder();
 

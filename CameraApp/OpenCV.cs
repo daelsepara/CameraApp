@@ -272,7 +272,7 @@ public class OpenCV : ImageProcessing, IDisposable
         if (src == null)
             return null;
 
-        nframe = new Image<Emgu.CV.Structure.Rgb, Byte>(src).Mat;
+        nframe = new Image<Emgu.CV.Structure.Rgb, byte>(src).Mat;
 
         return (nframe != null && nframe.GetData() != null) ? Rgb2Bgr(nframe) : null;
     }
@@ -344,7 +344,7 @@ public class OpenCV : ImageProcessing, IDisposable
         try
         {
             #region convert the image to grayscale
-            var img = src.ToImage<Bgr, Byte>();
+            var img = src.ToImage<Bgr, byte>();
             var uimage = DownUpSample ? NoiseFilter(img) : ConvertToGray(img);
             #endregion
 
@@ -479,7 +479,7 @@ public class OpenCV : ImageProcessing, IDisposable
         try
         {
             #region convert to gray scale
-            var img = src.ToImage<Bgr, Byte>();
+            var img = src.ToImage<Bgr, byte>();
             var uimage = DownUpSample ? NoiseFilter(img) : ConvertToGray(img);
             #endregion
 
@@ -803,7 +803,7 @@ public class OpenCV : ImageProcessing, IDisposable
         try
         {
             #region convert to grayscale
-            var img = src.ToImage<Bgr, Byte>();
+            var img = src.ToImage<Bgr, byte>();
             var uimage = DownUpSample ? NoiseFilter(img) : ConvertToGray(img);
             #endregion
 
@@ -903,7 +903,7 @@ public class OpenCV : ImageProcessing, IDisposable
     /// See http://docs.opencv.org/3.2.0/d4/d1f/tutorial_pyramids.html
     /// </summary>
     /// <param name="img">OpenCV image</param>
-    public Mat NoiseFilter(Image<Bgr, Byte> img)
+    public Mat NoiseFilter(Image<Bgr, byte> img)
     {
         var uimage = new Mat();
 
@@ -938,7 +938,7 @@ public class OpenCV : ImageProcessing, IDisposable
     /// </summary>
     /// <param name="img">OpenCV BGR image</param>
     /// <returns>OpenCV matrix</returns>
-    public Mat ConvertToGray(Image<Bgr, Byte> img)
+    public Mat ConvertToGray(Image<Bgr, byte> img)
     {
         var uimage = new Mat();
 
@@ -1557,7 +1557,7 @@ public class OpenCV : ImageProcessing, IDisposable
     /// 
     /// <param name="trash">disposable items</param>
     /// </summary>
-    void Throw(params IDisposable[] trash)
+    public void Throw(params IDisposable[] trash)
     {
         foreach (var item in trash)
         {
@@ -1608,7 +1608,7 @@ public class OpenCV : ImageProcessing, IDisposable
         try
         {
             #region convert to gray scale
-            var img = src.ToImage<Bgr, Byte>();
+            var img = src.ToImage<Bgr, byte>();
             var uimage = DownUpSample ? NoiseFilter(img) : ConvertToGray(img);
             #endregion
 
@@ -1835,7 +1835,7 @@ public class OpenCV : ImageProcessing, IDisposable
         try
         {
             #region convert to grayscale
-            var img = src.ToImage<Bgr, Byte>();
+            var img = src.ToImage<Bgr, byte>();
             var uimage = DownUpSample ? NoiseFilter(img) : ConvertToGray(img);
             #endregion
 
@@ -1933,7 +1933,7 @@ public class OpenCV : ImageProcessing, IDisposable
         try
         {
             #region convert the image to grayscale
-            var img = src.ToImage<Bgr, Byte>();
+            var img = src.ToImage<Bgr, byte>();
             var uimage = DownUpSample ? NoiseFilter(img) : ConvertToGray(img);
             #endregion
 
