@@ -11,7 +11,7 @@ public static class Face
         {
             using (var mat = cv.ToMat(pixbuf))
             {
-                var _cascadeClassifier = new CascadeClassifier("haarcascade_frontalface_alt.xml");
+                var _cascadeClassifier = new CascadeClassifier("haarcascade_frontalface_default.xml");
 
                 var img = mat.ToImage<Bgr, byte>();
                 var grayFrame = cv.ConvertToGray(img);
