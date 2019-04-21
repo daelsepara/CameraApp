@@ -31,7 +31,7 @@
             <property name="WidthRequest">984</property>
             <property name="HeightRequest">728</property>
             <property name="CanFocus">True</property>
-            <property name="CurrentPage">2</property>
+            <property name="CurrentPage">0</property>
             <signal name="SwitchPage" handler="OnMainNoteBookSwitchPage" />
             <child>
               <widget class="Gtk.Fixed" id="cameraLayout">
@@ -2022,7 +2022,7 @@
                   <widget class="Gtk.Notebook" id="DetectLayout">
                     <property name="MemberName" />
                     <property name="WidthRequest">460</property>
-                    <property name="HeightRequest">130</property>
+                    <property name="HeightRequest">140</property>
                     <property name="CanFocus">True</property>
                     <property name="CurrentPage">0</property>
                     <property name="BorderWidth">3</property>
@@ -2376,6 +2376,110 @@
                       </packing>
                     </child>
                     <child>
+                      <widget class="Gtk.Fixed" id="faceLayout">
+                        <property name="MemberName" />
+                        <property name="HasWindow">False</property>
+                        <child>
+                          <widget class="Gtk.SpinButton" id="minSize">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">100</property>
+                            <property name="Lower">10</property>
+                            <property name="Upper">10000</property>
+                            <property name="PageIncrement">10</property>
+                            <property name="StepIncrement">1</property>
+                            <property name="ClimbRate">1</property>
+                            <property name="Numeric">True</property>
+                            <property name="Value">10</property>
+                            <signal name="ValueChanged" handler="UpdateDetectorSettings" />
+                          </widget>
+                          <packing>
+                            <property name="X">10</property>
+                            <property name="Y">5</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Label" id="minSizeLabel">
+                            <property name="MemberName" />
+                            <property name="LabelProp" translatable="yes">min. Size</property>
+                          </widget>
+                          <packing>
+                            <property name="X">120</property>
+                            <property name="Y">10</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.SpinButton" id="minNeighbors">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">100</property>
+                            <property name="Lower">1</property>
+                            <property name="Upper">100</property>
+                            <property name="PageIncrement">10</property>
+                            <property name="StepIncrement">1</property>
+                            <property name="ClimbRate">1</property>
+                            <property name="Numeric">True</property>
+                            <property name="Value">1</property>
+                            <signal name="ValueChanged" handler="UpdateDetectorSettings" />
+                          </widget>
+                          <packing>
+                            <property name="X">10</property>
+                            <property name="Y">35</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Label" id="minNeighborsLabel">
+                            <property name="MemberName" />
+                            <property name="LabelProp" translatable="yes">min. rectangle neighbors</property>
+                          </widget>
+                          <packing>
+                            <property name="X">120</property>
+                            <property name="Y">40</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.SpinButton" id="scaleFactor">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">100</property>
+                            <property name="Lower">0.01</property>
+                            <property name="Upper">10</property>
+                            <property name="PageIncrement">0.1</property>
+                            <property name="PageSize">0.1</property>
+                            <property name="StepIncrement">0.1</property>
+                            <property name="ClimbRate">1</property>
+                            <property name="Digits">2</property>
+                            <property name="Numeric">True</property>
+                            <property name="Value">0.01</property>
+                            <signal name="ValueChanged" handler="UpdateDetectorSettings" />
+                          </widget>
+                          <packing>
+                            <property name="X">10</property>
+                            <property name="Y">65</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <widget class="Gtk.Label" id="scaleFactorLabel">
+                            <property name="MemberName" />
+                            <property name="LabelProp" translatable="yes">scale factor</property>
+                          </widget>
+                          <packing>
+                            <property name="X">120</property>
+                            <property name="Y">70</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="Position">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="Gtk.Label" id="FaceSettingsLabel">
+                        <property name="MemberName" />
+                        <property name="LabelProp" translatable="yes">Face</property>
+                      </widget>
+                      <packing>
+                        <property name="type">tab</property>
+                      </packing>
+                    </child>
+                    <child>
                       <widget class="Gtk.Fixed" id="markersLayout">
                         <property name="MemberName" />
                         <property name="HasWindow">False</property>
@@ -2465,7 +2569,7 @@
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">3</property>
+                        <property name="Position">4</property>
                       </packing>
                     </child>
                     <child>
@@ -2521,7 +2625,7 @@
                         </child>
                       </widget>
                       <packing>
-                        <property name="Position">4</property>
+                        <property name="Position">5</property>
                       </packing>
                     </child>
                     <child>

@@ -99,6 +99,9 @@ public static class Configuration
             Read(ref Detect.MinRadius, "detect", "MinRadius", 5);
             Read(ref Detect.MaxRadius, "detect", "MaxRadius", 500);
             Read(ref Detect.dp, "detect", "dp", 2.0);
+            Read(ref Detect.minSize, "detect", "minSize", 10);
+            Read(ref Detect.minNeighbors, "detect", "minNeighbors", 1);
+            Read(ref Detect.scaleFactor, "detect", "scaleFactor", 1.0);
             Read(ref Detect.MarkerSize, "detect", "MarkerSize", 2);
 
             return true;
@@ -182,6 +185,9 @@ public static class Configuration
         Write(Detect.MinRadius, "detect", "MinRadius");
         Write(Detect.MaxRadius, "detect", "MaxRadius");
         Write(Detect.dp, "detect", "dp");
+        Write(Detect.minSize, "detect", "minSize");
+        Write(Detect.minNeighbors, "detect", "minNeighbors");
+        Write(Detect.scaleFactor, "detect", "scaleFactor");
         Write(Detect.MarkerSize, "detect", "MarkerSize");
 
         parser.WriteFile(Directory.GetCurrentDirectory() + "/" + settings, AppSettings);

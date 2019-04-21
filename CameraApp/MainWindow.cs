@@ -274,6 +274,10 @@ public partial class MainWindow : Gtk.Window
         MinArea.Value = Detect.MinArea;
         MaxArea.Value = Detect.MaxArea;
         dp.Value = Detect.dp;
+        minSize.Value = Detect.minSize;
+        minNeighbors.Value = Detect.minNeighbors;
+        scaleFactor.Value = Detect.scaleFactor;
+
         MarkerSize.Value = Detect.MarkerSize;
         SelectedColor.Color = GtkSelection.SelectedColor;
         MarkerColor.Color = GtkSelection.MarkerColor;
@@ -1310,6 +1314,9 @@ public partial class MainWindow : Gtk.Window
             Detect.MaxArea = Convert.ToInt32(MaxArea.Value);
             Detect.dp = Convert.ToDouble(dp.Value);
             Detect.MarkerSize = Convert.ToInt32(MarkerSize.Value);
+            Detect.minSize = Convert.ToInt32(minSize.Value);
+            Detect.minNeighbors = Convert.ToInt32(minNeighbors.Value);
+            Detect.scaleFactor = Convert.ToDouble(scaleFactor.Value);
 
             GtkSelection.SelectedColor = SelectedColor.Color;
             GtkSelection.MarkerColor = MarkerColor.Color;

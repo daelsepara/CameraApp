@@ -15,6 +15,11 @@ public static class Detect
     public static int MinRadius = 5;
     public static int MaxRadius = 500;
     public static double dp = 2.0;
+    public static double scaleFactor = 1.0;
+    public static int minNeighbors = 1;
+    public static int minSize = 10;
+
+    public static string Classifier = "haarcascade_frontalface_default.xml";
 
     public static int MarkerSize = 2;
 
@@ -97,25 +102,28 @@ public static class Detect
         {
             using (var mat = cv.ToMat(pixbuf))
             {
-                var _cascadeClassifier = new CascadeClassifier("haarcascade_frontalface_default.xml");
+                var _cascadeClassifier = new CascadeClassifier(Classifier);
 
                 var img = mat.ToImage<Bgr, byte>();
                 var grayFrame = cv.ConvertToGray(img);
 
-                var faces = _cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 4, new System.Drawing.Size(pixbuf.Width / 8, pixbuf.Height / 8));
-
-                selection.Clear();
-
-                if (faces.Length > 0)
+                if (scaleFactor > 1.0)
                 {
-                    foreach (var face in faces)
-                    {
-                        var X0 = Convert.ToInt32(ScaleX * face.X);
-                        var Y0 = Convert.ToInt32(ScaleY * face.Y);
-                        var X1 = Convert.ToInt32(ScaleX * (face.X + face.Width - 1));
-                        var Y1 = Convert.ToInt32(ScaleY * (face.Y + face.Height - 1));
+                    var faces = _cascadeClassifier.DetectMultiScale(grayFrame, scaleFactor, minNeighbors, new System.Drawing.Size(minSize, minSize));
 
-                        selection.Add(X0, Y0, X1, Y1);
+                    selection.Clear();
+
+                    if (faces.Length > 0)
+                    {
+                        foreach (var face in faces)
+                        {
+                            var X0 = Convert.ToInt32(ScaleX * face.X);
+                            var Y0 = Convert.ToInt32(ScaleY * face.Y);
+                            var X1 = Convert.ToInt32(ScaleX * (face.X + face.Width - 1));
+                            var Y1 = Convert.ToInt32(ScaleY * (face.Y + face.Height - 1));
+
+                            selection.Add(X0, Y0, X1, Y1);
+                        }
                     }
                 }
 
