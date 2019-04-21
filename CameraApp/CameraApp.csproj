@@ -78,7 +78,6 @@
         <Compile Include="Pattern.cs" />
         <Compile Include="Configuration.cs" />
         <Compile Include="Detect.cs" />
-        <Compile Include="Face.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />

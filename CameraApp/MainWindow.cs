@@ -1,6 +1,6 @@
-using Gtk;
 using Gdk;
 using GLib;
+using Gtk;
 using System;
 using System.IO;
 using System.Threading;
@@ -1387,7 +1387,7 @@ public partial class MainWindow : Gtk.Window
     {
         if (ControlsActive)
         {
-            Face.Detect(
+            Detect.Faces(
                 opencv,
                 OriginalImage,
                 GtkSelection.Selection,
