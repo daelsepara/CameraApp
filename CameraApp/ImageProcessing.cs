@@ -1,0 +1,4 @@
+abstract public class ImageProcessing
+{
+}
+

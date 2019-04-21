@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+        <ProjectGuid>{135EAE35-948C-4125-B537-BCA58C701ABF}</ProjectGuid>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>CameraApp</RootNamespace>
+        <AssemblyName>CameraApp</AssemblyName>
+        <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug</OutputPath>
+        <DefineConstants>DEBUG;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(OS)' == 'Unix' and ! $([System.IO.File]::Exists('/usr/lib/libc.dylib')) ">
+        <DefineConstants>_LINUX</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="gtk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+            <SpecificVersion>False</SpecificVersion>
+            <Package>gtk-sharp-2.0</Package>
+        </Reference>
+        <Reference Include="gdk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+            <SpecificVersion>False</SpecificVersion>
+            <Package>gtk-sharp-2.0</Package>
+        </Reference>
+        <Reference Include="glib-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+            <SpecificVersion>False</SpecificVersion>
+            <Package>glib-sharp-2.0</Package>
+        </Reference>
+        <Reference Include="Mono.Posix" />
+        <Reference Include="System.Drawing" />
+        <Reference Include="System.ServiceModel" />
+        <Reference Include="System.Xml" />
+        <Reference Include="INIFileParser">
+            <HintPath>..\packages\ini-parser.3.4.0\lib\net20\INIFileParser.dll</HintPath>
+        </Reference>
+        <Reference Include="Emgu.CV.World">
+            <HintPath>..\..\emgucv\libs\Emgu.CV.World.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="gtk-gui\gui.stetic">
+            <LogicalName>gui.stetic</LogicalName>
+        </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="gtk-gui\generated.cs" />
+        <Compile Include="MainWindow.cs" />
+        <Compile Include="gtk-gui\MainWindow.cs" />
+        <Compile Include="Program.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="VirtualCamera.cs" />
+        <Compile Include="OpenCVCamera.cs" />
+        <Compile Include="OpenCV.cs" />
+        <Compile Include="ImageProcessing.cs" />
+        <Compile Include="Ellipse.cs" />
+        <Compile Include="Box.cs" />
+        <Compile Include="GtkSelection.cs" />
+        <Compile Include="Capture.cs" />
+        <Compile Include="Select.cs" />
+        <Compile Include="Pattern.cs" />
+        <Compile Include="Configuration.cs" />
+        <Compile Include="Detect.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="packages.config" />
+    </ItemGroup>
+    <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
