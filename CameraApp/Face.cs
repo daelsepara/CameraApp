@@ -1,4 +1,4 @@
-using Emgu.CV;
+﻿using Emgu.CV;
 using Emgu.CV.Structure;
 using Gdk;
 
@@ -16,6 +16,8 @@ public static class Face
                 var grayFrame = cv.ConvertToGray(img);
 
                 var faces = _cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 4, new System.Drawing.Size(pixbuf.Width / 8, pixbuf.Height / 8));
+
+                selection.Clear();
 
                 if (faces.Length > 0)
                 {
