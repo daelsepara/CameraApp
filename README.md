@@ -1,2 +1,2 @@
 # CameraApp
-Camera/DMD App using EmguCV, Gtk and C#/Mono 
+Camera/DMD App using EmguCV (OpenCV), Gtk and C#/Mono 
