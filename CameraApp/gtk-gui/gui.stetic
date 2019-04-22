@@ -2465,6 +2465,21 @@
                             <property name="Y">70</property>
                           </packing>
                         </child>
+                        <child>
+                          <widget class="Gtk.Button" id="selectClassifierButton">
+                            <property name="MemberName" />
+                            <property name="WidthRequest">130</property>
+                            <property name="Type">TextOnly</property>
+                            <property name="Label" translatable="yes">select classifier</property>
+                            <property name="UseUnderline">True</property>
+                            <property name="FocusOnClick">False</property>
+                            <signal name="Clicked" handler="OnSelectClassifierButtonClicked" />
+                          </widget>
+                          <packing>
+                            <property name="X">290</property>
+                            <property name="Y">5</property>
+                          </packing>
+                        </child>
                       </widget>
                       <packing>
                         <property name="Position">3</property>

@@ -24,6 +24,7 @@ public partial class MainWindow : Gtk.Window
 
     FileChooserDialog ImageSaver;
     FileChooserDialog ImageLoader;
+    FileChooserDialog ClassifierChooser;
 
     bool ControlsActive;
 
@@ -331,6 +332,16 @@ public partial class MainWindow : Gtk.Window
         }
     }
 
+    protected FileFilter AddFilter(string name, params string[] patterns)
+    {
+        var filter = new FileFilter() { Name = name };
+
+        foreach (var pattern in patterns)
+            filter.AddPattern(pattern);
+
+        return filter;
+    }
+
     void InitializeChooser()
     {
         ImageSaver = new FileChooserDialog(
@@ -341,6 +352,8 @@ public partial class MainWindow : Gtk.Window
             "Save", ResponseType.Accept
         );
 
+        ImageSaver.AddFilter(AddFilter("png", "*.png"));
+
         ImageLoader = new FileChooserDialog(
             "Load Pattern",
             this,
@@ -348,6 +361,18 @@ public partial class MainWindow : Gtk.Window
             "Cancel", ResponseType.Cancel,
             "Open", ResponseType.Accept
         );
+
+        ImageLoader.AddFilter(AddFilter("Image files (png/jpg/jpeg/tif/tiff/bmp/gif/ico/xpm/icns/pgm)", "*.png", "*.jpg", "*.jpeg", "*.tif", "*.tiff", "*.bmp", "*.gif", "*.ico", "*.xpm", "*.icns", "*.pgm"));
+
+        ClassifierChooser = new FileChooserDialog(
+            "Choose the Classifier to open",
+            this,
+            FileChooserAction.Open,
+            "Open", ResponseType.Accept,
+            "Cancel", ResponseType.Cancel
+        );
+
+        ClassifierChooser.AddFilter(AddFilter("Classifiers (xml)", "*.xml"));
     }
 
     void Redraw(Gtk.Image background)
@@ -1503,5 +1528,30 @@ public partial class MainWindow : Gtk.Window
 
             ImageSaver.Hide();
         }
+    }
+
+    protected void OnSelectClassifierButtonClicked(object sender, EventArgs e)
+    {
+        ClassifierChooser.Title = "Select Classifier";
+
+        if (!string.IsNullOrEmpty(ClassifierChooser.Filename))
+        {
+            var directory = System.IO.Path.GetDirectoryName(ClassifierChooser.Filename);
+
+            if (Directory.Exists(directory))
+            {
+                ClassifierChooser.SetCurrentFolder(directory);
+            }
+        }
+
+        if (ClassifierChooser.Run() == Convert.ToInt32(ResponseType.Accept))
+        {
+            if (!string.IsNullOrEmpty(ClassifierChooser.Filename))
+            {
+                Detect.Classifier = ClassifierChooser.Filename;
+            }
+        }
+
+        ClassifierChooser.Hide();
     }
 }

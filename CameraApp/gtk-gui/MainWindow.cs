@@ -371,6 +371,8 @@ public partial class MainWindow
 
 	private global::Gtk.Label scaleFactorLabel;
 
+	private global::Gtk.Button selectClassifierButton;
+
 	private global::Gtk.Label FaceSettingsLabel;
 
 	private global::Gtk.Fixed markersLayout;
@@ -2237,9 +2239,20 @@ public partial class MainWindow
 		global::Gtk.Fixed.FixedChild w168 = ((global::Gtk.Fixed.FixedChild)(this.faceLayout[this.scaleFactorLabel]));
 		w168.X = 120;
 		w168.Y = 70;
+		// Container child faceLayout.Gtk.Fixed+FixedChild
+		this.selectClassifierButton = new global::Gtk.Button();
+		this.selectClassifierButton.WidthRequest = 130;
+		this.selectClassifierButton.Name = "selectClassifierButton";
+		this.selectClassifierButton.UseUnderline = true;
+		this.selectClassifierButton.FocusOnClick = false;
+		this.selectClassifierButton.Label = global::Mono.Unix.Catalog.GetString("select classifier");
+		this.faceLayout.Add(this.selectClassifierButton);
+		global::Gtk.Fixed.FixedChild w169 = ((global::Gtk.Fixed.FixedChild)(this.faceLayout[this.selectClassifierButton]));
+		w169.X = 290;
+		w169.Y = 5;
 		this.DetectLayout.Add(this.faceLayout);
-		global::Gtk.Notebook.NotebookChild w169 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.faceLayout]));
-		w169.Position = 3;
+		global::Gtk.Notebook.NotebookChild w170 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.faceLayout]));
+		w170.Position = 3;
 		// Notebook tab
 		this.FaceSettingsLabel = new global::Gtk.Label();
 		this.FaceSettingsLabel.Name = "FaceSettingsLabel";
@@ -2256,9 +2269,9 @@ public partial class MainWindow
 		this.MarkerSizeLabel.LabelProp = global::Mono.Unix.Catalog.GetString("<b>Size</b>");
 		this.MarkerSizeLabel.UseMarkup = true;
 		this.markersLayout.Add(this.MarkerSizeLabel);
-		global::Gtk.Fixed.FixedChild w170 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerSizeLabel]));
-		w170.X = 5;
-		w170.Y = 5;
+		global::Gtk.Fixed.FixedChild w171 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerSizeLabel]));
+		w171.X = 5;
+		w171.Y = 5;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.spinbutton13 = new global::Gtk.SpinButton(0D, 1000D, 1D);
 		this.spinbutton13.CanFocus = true;
@@ -2267,55 +2280,55 @@ public partial class MainWindow
 		this.spinbutton13.ClimbRate = 1D;
 		this.spinbutton13.Numeric = true;
 		this.markersLayout.Add(this.spinbutton13);
-		global::Gtk.Fixed.FixedChild w171 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.spinbutton13]));
-		w171.X = 5;
-		w171.Y = 25;
+		global::Gtk.Fixed.FixedChild w172 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.spinbutton13]));
+		w172.X = 5;
+		w172.Y = 25;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.ColorsLabel = new global::Gtk.Label();
 		this.ColorsLabel.Name = "ColorsLabel";
 		this.ColorsLabel.LabelProp = global::Mono.Unix.Catalog.GetString("<b>Colors</b>");
 		this.ColorsLabel.UseMarkup = true;
 		this.markersLayout.Add(this.ColorsLabel);
-		global::Gtk.Fixed.FixedChild w172 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.ColorsLabel]));
-		w172.X = 100;
-		w172.Y = 5;
+		global::Gtk.Fixed.FixedChild w173 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.ColorsLabel]));
+		w173.X = 100;
+		w173.Y = 5;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.SelectedColorLabel = new global::Gtk.Label();
 		this.SelectedColorLabel.Name = "SelectedColorLabel";
 		this.SelectedColorLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Selected");
 		this.markersLayout.Add(this.SelectedColorLabel);
-		global::Gtk.Fixed.FixedChild w173 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.SelectedColorLabel]));
-		w173.X = 100;
-		w173.Y = 55;
+		global::Gtk.Fixed.FixedChild w174 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.SelectedColorLabel]));
+		w174.X = 100;
+		w174.Y = 55;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.MarkerColorLabel = new global::Gtk.Label();
 		this.MarkerColorLabel.Name = "MarkerColorLabel";
 		this.MarkerColorLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Default");
 		this.markersLayout.Add(this.MarkerColorLabel);
-		global::Gtk.Fixed.FixedChild w174 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerColorLabel]));
-		w174.X = 100;
-		w174.Y = 25;
+		global::Gtk.Fixed.FixedChild w175 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerColorLabel]));
+		w175.X = 100;
+		w175.Y = 25;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.MarkerColor = new global::Gtk.ColorButton();
 		this.MarkerColor.Events = ((global::Gdk.EventMask)(784));
 		this.MarkerColor.Name = "MarkerColor";
 		this.MarkerColor.FocusOnClick = false;
 		this.markersLayout.Add(this.MarkerColor);
-		global::Gtk.Fixed.FixedChild w175 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerColor]));
-		w175.X = 165;
-		w175.Y = 15;
+		global::Gtk.Fixed.FixedChild w176 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.MarkerColor]));
+		w176.X = 165;
+		w176.Y = 15;
 		// Container child markersLayout.Gtk.Fixed+FixedChild
 		this.SelectedColor = new global::Gtk.ColorButton();
 		this.SelectedColor.Events = ((global::Gdk.EventMask)(784));
 		this.SelectedColor.Name = "SelectedColor";
 		this.SelectedColor.FocusOnClick = false;
 		this.markersLayout.Add(this.SelectedColor);
-		global::Gtk.Fixed.FixedChild w176 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.SelectedColor]));
-		w176.X = 165;
-		w176.Y = 50;
+		global::Gtk.Fixed.FixedChild w177 = ((global::Gtk.Fixed.FixedChild)(this.markersLayout[this.SelectedColor]));
+		w177.X = 165;
+		w177.Y = 50;
 		this.DetectLayout.Add(this.markersLayout);
-		global::Gtk.Notebook.NotebookChild w177 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.markersLayout]));
-		w177.Position = 4;
+		global::Gtk.Notebook.NotebookChild w178 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.markersLayout]));
+		w178.Position = 4;
 		// Notebook tab
 		this.MarkersLabel = new global::Gtk.Label();
 		this.MarkersLabel.Name = "MarkersLabel";
@@ -2333,9 +2346,9 @@ public partial class MainWindow
 		this.loadImageSettingsButton.FocusOnClick = false;
 		this.loadImageSettingsButton.Label = global::Mono.Unix.Catalog.GetString("Load Settings");
 		this.imageSettingsLayout.Add(this.loadImageSettingsButton);
-		global::Gtk.Fixed.FixedChild w178 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.loadImageSettingsButton]));
-		w178.X = 5;
-		w178.Y = 5;
+		global::Gtk.Fixed.FixedChild w179 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.loadImageSettingsButton]));
+		w179.X = 5;
+		w179.Y = 5;
 		// Container child imageSettingsLayout.Gtk.Fixed+FixedChild
 		this.saveImageSettingsButton = new global::Gtk.Button();
 		this.saveImageSettingsButton.Name = "saveImageSettingsButton";
@@ -2343,20 +2356,20 @@ public partial class MainWindow
 		this.saveImageSettingsButton.FocusOnClick = false;
 		this.saveImageSettingsButton.Label = global::Mono.Unix.Catalog.GetString("Save Settings");
 		this.imageSettingsLayout.Add(this.saveImageSettingsButton);
-		global::Gtk.Fixed.FixedChild w179 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.saveImageSettingsButton]));
-		w179.X = 5;
-		w179.Y = 35;
+		global::Gtk.Fixed.FixedChild w180 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.saveImageSettingsButton]));
+		w180.X = 5;
+		w180.Y = 35;
 		// Container child imageSettingsLayout.Gtk.Fixed+FixedChild
 		this.detectSettingsLabel = new global::Gtk.Label();
 		this.detectSettingsLabel.Name = "detectSettingsLabel";
 		this.detectSettingsLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Load / Save detection settings");
 		this.imageSettingsLayout.Add(this.detectSettingsLabel);
-		global::Gtk.Fixed.FixedChild w180 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.detectSettingsLabel]));
-		w180.X = 7;
-		w180.Y = 68;
+		global::Gtk.Fixed.FixedChild w181 = ((global::Gtk.Fixed.FixedChild)(this.imageSettingsLayout[this.detectSettingsLabel]));
+		w181.X = 7;
+		w181.Y = 68;
 		this.DetectLayout.Add(this.imageSettingsLayout);
-		global::Gtk.Notebook.NotebookChild w181 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.imageSettingsLayout]));
-		w181.Position = 5;
+		global::Gtk.Notebook.NotebookChild w182 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.imageSettingsLayout]));
+		w182.Position = 5;
 		// Notebook tab
 		this.ImageSettingsLabel = new global::Gtk.Label();
 		this.ImageSettingsLabel.Name = "ImageSettingsLabel";
@@ -2364,17 +2377,17 @@ public partial class MainWindow
 		this.DetectLayout.SetTabLabel(this.imageSettingsLayout, this.ImageSettingsLabel);
 		this.ImageSettingsLabel.ShowAll();
 		this.imageDetectLayout.Add(this.DetectLayout);
-		global::Gtk.Fixed.FixedChild w182 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.DetectLayout]));
-		w182.X = 500;
-		w182.Y = 550;
+		global::Gtk.Fixed.FixedChild w183 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.DetectLayout]));
+		w183.X = 500;
+		w183.Y = 550;
 		// Container child imageDetectLayout.Gtk.Fixed+FixedChild
 		this.dpLabel = new global::Gtk.Label();
 		this.dpLabel.Name = "dpLabel";
 		this.dpLabel.LabelProp = global::Mono.Unix.Catalog.GetString("dp");
 		this.imageDetectLayout.Add(this.dpLabel);
-		global::Gtk.Fixed.FixedChild w183 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.dpLabel]));
-		w183.X = 380;
-		w183.Y = 645;
+		global::Gtk.Fixed.FixedChild w184 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.dpLabel]));
+		w184.X = 380;
+		w184.Y = 645;
 		// Container child imageDetectLayout.Gtk.Fixed+FixedChild
 		this.dp = new global::Gtk.SpinButton(0D, 100D, 1D);
 		this.dp.Name = "dp";
@@ -2383,12 +2396,12 @@ public partial class MainWindow
 		this.dp.Digits = ((uint)(2));
 		this.dp.Numeric = true;
 		this.imageDetectLayout.Add(this.dp);
-		global::Gtk.Fixed.FixedChild w184 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.dp]));
-		w184.X = 405;
-		w184.Y = 640;
+		global::Gtk.Fixed.FixedChild w185 = ((global::Gtk.Fixed.FixedChild)(this.imageDetectLayout[this.dp]));
+		w185.X = 405;
+		w185.Y = 640;
 		this.mainNoteBook.Add(this.imageDetectLayout);
-		global::Gtk.Notebook.NotebookChild w185 = ((global::Gtk.Notebook.NotebookChild)(this.mainNoteBook[this.imageDetectLayout]));
-		w185.Position = 2;
+		global::Gtk.Notebook.NotebookChild w186 = ((global::Gtk.Notebook.NotebookChild)(this.mainNoteBook[this.imageDetectLayout]));
+		w186.Position = 2;
 		// Notebook tab
 		this.ImageDetectLabel = new global::Gtk.Label();
 		this.ImageDetectLabel.Name = "ImageDetectLabel";
@@ -2396,9 +2409,9 @@ public partial class MainWindow
 		this.mainNoteBook.SetTabLabel(this.imageDetectLayout, this.ImageDetectLabel);
 		this.ImageDetectLabel.ShowAll();
 		this.mainLayout.Add(this.mainNoteBook);
-		global::Gtk.Fixed.FixedChild w186 = ((global::Gtk.Fixed.FixedChild)(this.mainLayout[this.mainNoteBook]));
-		w186.X = 20;
-		w186.Y = 20;
+		global::Gtk.Fixed.FixedChild w187 = ((global::Gtk.Fixed.FixedChild)(this.mainLayout[this.mainNoteBook]));
+		w187.X = 20;
+		w187.Y = 20;
 		this.Add(this.mainLayout);
 		if ((this.Child != null))
 		{
@@ -2513,6 +2526,7 @@ public partial class MainWindow
 		this.minSize.ValueChanged += new global::System.EventHandler(this.UpdateDetectorSettings);
 		this.minNeighbors.ValueChanged += new global::System.EventHandler(this.UpdateDetectorSettings);
 		this.scaleFactor.ValueChanged += new global::System.EventHandler(this.UpdateDetectorSettings);
+		this.selectClassifierButton.Clicked += new global::System.EventHandler(this.OnSelectClassifierButtonClicked);
 		this.spinbutton13.ValueChanged += new global::System.EventHandler(this.UpdateDetectorSettings);
 		this.MarkerColor.ColorSet += new global::System.EventHandler(this.UpdateDetectorSettings);
 		this.SelectedColor.ColorSet += new global::System.EventHandler(this.UpdateDetectorSettings);
