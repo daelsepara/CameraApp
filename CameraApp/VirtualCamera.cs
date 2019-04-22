@@ -21,7 +21,9 @@ abstract public class VirtualCamera
 
     abstract public int Height();
 
+#if _LINUX || _WIN32
     abstract public Bitmap Bitmap();
+#endif
 
     abstract public Pixbuf Pixbuf();
 

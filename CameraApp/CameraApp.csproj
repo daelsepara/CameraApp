@@ -45,14 +45,29 @@
             <Package>glib-sharp-2.0</Package>
         </Reference>
         <Reference Include="Mono.Posix" />
-        <Reference Include="System.Drawing" />
+        <Reference Include="System.Drawing" Condition=" ('$(OS)' == 'Unix' and ! $([System.IO.File]::Exists('/usr/lib/libc.dylib'))) or '$(OS)' == 'Windows' " />
         <Reference Include="System.ServiceModel" />
-        <Reference Include="System.Xml" />
+        <Reference Include="System.Xml" Condition=" ('$(OS)' == 'Unix' and ! $([System.IO.File]::Exists('/usr/lib/libc.dylib'))) or '$(OS)' == 'Windows' " />
         <Reference Include="INIFileParser">
             <HintPath>..\packages\ini-parser.3.4.0\lib\net20\INIFileParser.dll</HintPath>
         </Reference>
-        <Reference Include="Emgu.CV.World">
+        <Reference Include="Emgu.CV.World" Condition=" '$(OS)' == 'Windows' ">
             <HintPath>..\..\emgucv\libs\Emgu.CV.World.dll</HintPath>
+        </Reference>
+        <Reference Include="Emgu.CV.World" Condition=" '$(OS)' == 'Unix' and ! $([System.IO.File]::Exists('/usr/lib/libc.dylib')) ">
+            <HintPath>../../emgucv/libs/Emgu.CV.World.dll</HintPath>
+        </Reference>
+		<Reference Include="Emgu.CV.World.Mac" Condition=" '$(OS)' == 'Unix' and $([System.IO.File]::Exists('/usr/lib/libc.dylib')) ">
+            <HintPath>../../emgucv/libs/Emgu.CV.World.Mac.dll</HintPath>
+        </Reference>
+		<Reference Include="OpenTK.Xml" Condition=" '$(OS)' == 'Unix' and $([System.IO.File]::Exists('/usr/lib/libc.dylib')) ">
+          <HintPath>/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/OpenTK.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Xml" Condition=" '$(OS)' == 'Unix' and $([System.IO.File]::Exists('/usr/lib/libc.dylib')) ">
+          <HintPath>/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/System.Xml.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Mac" Condition=" '$(OS)' == 'Unix' and $([System.IO.File]::Exists('/usr/lib/libc.dylib')) ">
+          <HintPath>/Library/Frameworks/Xamarin.Mac.framework/Versions/Current/lib/mono/Xamarin.Mac/Xamarin.Mac.dll</HintPath>
         </Reference>
     </ItemGroup>
     <ItemGroup>

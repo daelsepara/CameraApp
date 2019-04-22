@@ -142,6 +142,7 @@ class OpenCVCamera : VirtualCamera, IDisposable
         return camera != null ? height : 0;
     }
 
+#if _LINUX || _WIN32
     override public Bitmap Bitmap()
     {
         try
@@ -154,6 +155,7 @@ class OpenCVCamera : VirtualCamera, IDisposable
             return null;
         }
     }
+#endif
 
     override public Pixbuf Pixbuf()
     {

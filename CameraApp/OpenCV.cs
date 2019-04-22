@@ -151,6 +151,8 @@ public class OpenCV : ImageProcessing, IDisposable
         return dest;
     }
 
+#if _LINUX || _WIN32
+
     /// <summary>
     /// Convert an OpenCV matrix to Bitmap
     /// </summary>
@@ -202,6 +204,7 @@ public class OpenCV : ImageProcessing, IDisposable
             return new Pixbuf(stream);
         }
     }
+#endif
 
     /// <summary>
     /// Convert an OpenCV matrix to a Gdk Pixbuf with optional alpha channel.
@@ -261,6 +264,7 @@ public class OpenCV : ImageProcessing, IDisposable
         return ToPixbufNoCC(src, false);
     }
 
+#if _LINUX || _WIN32
     /// <summary>
     /// Convert a Bitmap to an OpenCV matrix
     /// Does not perform any color conversion
@@ -276,6 +280,7 @@ public class OpenCV : ImageProcessing, IDisposable
 
         return (nframe != null && nframe.GetData() != null) ? Rgb2Bgr(nframe) : null;
     }
+#endif
 
     /// <summary>
     /// Load an image into an OpenCV matrix
@@ -420,6 +425,7 @@ public class OpenCV : ImageProcessing, IDisposable
         return nframe;
     }
 
+#if _LINUX || _WIN32
     /// <summary>
     /// Detects circles on an OpenCV matrix using Hough Circles Transform.
     /// Performs color conversion from BGR to RGB
@@ -438,6 +444,7 @@ public class OpenCV : ImageProcessing, IDisposable
     {
         return ToBitmap(DetectCirclesMat(src, dp, minDist, cannyThreshold, circleAccumulatorThreshold, minRadius, maxRadius, markerColor, markerSize));
     }
+#endif
 
     /// <summary>
     /// Detects circles on an OpenCV matrix using Hough Circles Transform.
@@ -596,6 +603,7 @@ public class OpenCV : ImageProcessing, IDisposable
         return ToPixbufNoCC(DetectBlobsMat(src, cannyThreshold, cannyThresholdLinking, minArea, maxArea, markerColor, markerSize));
     }
 
+#if _LINUX || _WIN32
     /// <summary>
     /// Detects blobs using Canny edge detection and contour detection.
     /// The smallest value between threshold1 and threshold2 is used for edge linking. The largest value is used to find initial segments of strong edges.
@@ -611,6 +619,7 @@ public class OpenCV : ImageProcessing, IDisposable
     {
         return ToBitmap(DetectBlobsMat(src, cannyThreshold, cannyThresholdLinking, minArea, maxArea, markerColor, markerSize));
     }
+#endif
 
     /// <summary>
     /// Detects blobs using Gaussian blurring filter and background subttraction.
@@ -702,6 +711,7 @@ public class OpenCV : ImageProcessing, IDisposable
         return nframe;
     }
 
+#if _LINUX || _WIN32
     /// <summary>
     /// Detects blobs using Gaussian blurring filter and background subttraction.
     /// Performs color conversion from BGR to RGB
@@ -716,6 +726,7 @@ public class OpenCV : ImageProcessing, IDisposable
     {
         return ToBitmap(BlobDetectorMat(src, minArea, maxArea, markerColor, markerSize));
     }
+#endif
 
     /// <summary>
     /// Detects blobs using Gaussian blurring filter and background subttraction.
@@ -884,6 +895,7 @@ public class OpenCV : ImageProcessing, IDisposable
         return ToPixbufNoCC(SimpleBlobDetectionMat(src, markerColor));
     }
 
+#if _LINUX || _WIN32
     /// <summary>
     /// This implements a simple algorithm for extracting blobs from an image
     /// 
@@ -896,6 +908,7 @@ public class OpenCV : ImageProcessing, IDisposable
     {
         return ToBitmap(SimpleBlobDetectionMat(src, markerColor));
     }
+#endif
 
     /// <summary>
     /// Reduces noise by downsampling and then upsampling

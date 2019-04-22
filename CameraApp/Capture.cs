@@ -1,14 +1,19 @@
 using Emgu.CV.CvEnum;
 using Gdk;
+#if _LINUX || _WIN32
 using System.Drawing.Imaging;
+#endif
 using System.IO;
 
 public static class Capture
 {
+
+#if _LINUX || _WIN32
     public static Pixbuf ProcessPixbufBMP(VirtualCamera camera, OpenCV cv)
     {
         return camera != null ? cv.ToPixbuf(cv.ToBitmap(camera.Pixbuf())) : null;
     }
+#endif
 
     public static Pixbuf ProcessPixbuf(VirtualCamera camera)
     {
@@ -40,6 +45,7 @@ public static class Capture
         return Flip(camera, cv, FlipType.None);
     }
 
+#if _LINUX || _WIN32
     public static Pixbuf ProcessBitmap(VirtualCamera camera)
     {
         if (camera != null)
@@ -61,6 +67,7 @@ public static class Capture
 
         return null;
     }
+#endif
 
     public static Pixbuf ProcessMat(VirtualCamera camera, OpenCV cv)
     {
