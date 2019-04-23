@@ -45,13 +45,13 @@
             <Package>glib-sharp-2.0</Package>
         </Reference>
         <Reference Include="Mono.Posix" />
-        <Reference Include="System.Drawing" Condition=" ('$(OS)' == 'Unix' and ! $([System.IO.File]::Exists('/usr/lib/libc.dylib'))) or '$(OS)' == 'Windows' " />
+        <Reference Include="System.Drawing" Condition=" ('$(OS)' == 'Unix' and ! $([System.IO.File]::Exists('/usr/lib/libc.dylib'))) or '$(OS)' == 'Windows_NT' " />
         <Reference Include="System.ServiceModel" />
-        <Reference Include="System.Xml" Condition=" ('$(OS)' == 'Unix' and ! $([System.IO.File]::Exists('/usr/lib/libc.dylib'))) or '$(OS)' == 'Windows' " />
+        <Reference Include="System.Xml" Condition=" ('$(OS)' == 'Unix' and ! $([System.IO.File]::Exists('/usr/lib/libc.dylib'))) or '$(OS)' == 'Windows_NT' " />
         <Reference Include="INIFileParser">
             <HintPath>..\packages\ini-parser.3.4.0\lib\net20\INIFileParser.dll</HintPath>
         </Reference>
-        <Reference Include="Emgu.CV.World" Condition=" '$(OS)' == 'Windows' ">
+        <Reference Include="Emgu.CV.World" Condition=" '$(OS)' == 'Windows_NT' ">
             <HintPath>..\..\emgucv\libs\Emgu.CV.World.dll</HintPath>
         </Reference>
         <Reference Include="Emgu.CV.World" Condition=" '$(OS)' == 'Unix' and ! $([System.IO.File]::Exists('/usr/lib/libc.dylib')) ">
