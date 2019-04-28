@@ -102,32 +102,35 @@ public static class Detect
         {
             using (var mat = cv.ToMat(pixbuf))
             {
-                var _cascadeClassifier = new CascadeClassifier(Classifier);
+				if (System.IO.File.Exists(Classifier))
+				{
+					var _cascadeClassifier = new CascadeClassifier(Classifier);
 
-                var img = mat.ToImage<Bgr, byte>();
-                var grayFrame = cv.ConvertToGray(img);
+					var img = mat.ToImage<Bgr, byte>();
+					var grayFrame = cv.ConvertToGray(img);
 
-                if (scaleFactor > 1.0)
-                {
-                    var faces = _cascadeClassifier.DetectMultiScale(grayFrame, scaleFactor, minNeighbors, new System.Drawing.Size(minSize, minSize));
+					if (scaleFactor > 1.0)
+					{
+						var faces = _cascadeClassifier.DetectMultiScale(grayFrame, scaleFactor, minNeighbors, new System.Drawing.Size(minSize, minSize));
 
-                    selection.Clear();
+						selection.Clear();
 
-                    if (faces.Length > 0)
-                    {
-                        foreach (var face in faces)
-                        {
-                            var X0 = Convert.ToInt32(ScaleX * face.X);
-                            var Y0 = Convert.ToInt32(ScaleY * face.Y);
-                            var X1 = Convert.ToInt32(ScaleX * (face.X + face.Width - 1));
-                            var Y1 = Convert.ToInt32(ScaleY * (face.Y + face.Height - 1));
+						if (faces.Length > 0)
+						{
+							foreach (var face in faces)
+							{
+								var X0 = Convert.ToInt32(ScaleX * face.X);
+								var Y0 = Convert.ToInt32(ScaleY * face.Y);
+								var X1 = Convert.ToInt32(ScaleX * (face.X + face.Width - 1));
+								var Y1 = Convert.ToInt32(ScaleY * (face.Y + face.Height - 1));
 
-                            selection.Add(X0, Y0, X1, Y1);
-                        }
-                    }
-                }
+								selection.Add(X0, Y0, X1, Y1);
+							}
+						}
+					}
 
-                cv.Throw(grayFrame, img);
+					cv.Throw(grayFrame, img);
+				}
             }
         }
     }
