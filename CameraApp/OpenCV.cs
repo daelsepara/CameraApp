@@ -1869,7 +1869,6 @@ public class OpenCV : ImageProcessing, IDisposable
             #region edge detection
             if (SubtractBackground)
             {
-
                 #region detect background
                 var foregroundMask = BackgroundSubtract(smoothedFrame);
                 #endregion
@@ -1894,7 +1893,6 @@ public class OpenCV : ImageProcessing, IDisposable
 
             foreach (var keypoint in keypoints)
             {
-
                 var X0 = Convert.ToInt32(ScaleX * (keypoint.Point.X - keypoint.Size));
                 var Y0 = Convert.ToInt32(ScaleX * (keypoint.Point.Y - keypoint.Size));
                 var X1 = Convert.ToInt32(ScaleX * (keypoint.Point.X + keypoint.Size));
@@ -2014,6 +2012,83 @@ public class OpenCV : ImageProcessing, IDisposable
             #region cleanup
             CollectGarbage();
             #endregion
+        }
+    }
+
+    /// <summary>
+    /// Detect objects based on HAAR Cascade filters
+    /// 
+    /// Saves coordinates of detected blobs in provided list
+    /// </summary>
+    /// 
+    /// <param name="src">Source OpenCV matrix</param>
+    /// <param name="Classifier">File path of HAAR Cascade classifier (XML format)</param>
+    /// <param name="scaleFactor">Amount of image size reduction at each image scale</param>
+    /// <param name="minSize">Minimum object size to consider</param>
+    /// <param name="minNeighbors">Minimum number of neighboring rectangles for an object to be considered as detected</param>
+    /// <param name="selection">List of regions</param>
+    /// <param name="ScaleX">X-axis scaling</param>
+    /// <param name="ScaleY">Y-axis scaling</param>
+    public void DetectHaarMat(Mat src, string Classifier, double scaleFactor, int minSize, int minNeighbors, Select selection, double ScaleX, double ScaleY)
+    {
+        if (src == null)
+            return;
+
+        selection.Clear();
+
+        if (File.Exists(Classifier) && scaleFactor > 1.0)
+        {
+            try
+            {
+                #region convert the image to grayscale
+                var img = src.ToImage<Bgr, byte>();
+                var uimage = DownUpSample ? NoiseFilter(img) : ConvertToGray(img);
+                #endregion
+
+                #region invert gray colors
+                if (Invert)
+                    GrayInvert(uimage);
+                #endregion
+
+                #region normalize
+                if (Normalize)
+                    NormalizeGray(uimage);
+                #endregion
+
+                #region apply Gaussian blur
+                var smoothedFrame = Blur ? GaussianBlur(uimage, sx, sy, sigmaX, sigmaY) : uimage.Clone();
+                #endregion
+
+                var _cascadeClassifier = new CascadeClassifier(Classifier);
+                var objects = _cascadeClassifier.DetectMultiScale(smoothedFrame, scaleFactor, minNeighbors, new System.Drawing.Size(minSize, minSize));
+
+                if (objects.Length > 0)
+                {
+                    foreach (var obj in objects)
+                    {
+                        var X0 = Convert.ToInt32(ScaleX * obj.X);
+                        var Y0 = Convert.ToInt32(ScaleY * obj.Y);
+                        var X1 = Convert.ToInt32(ScaleX * (obj.X + obj.Width - 1));
+                        var Y1 = Convert.ToInt32(ScaleY * (obj.Y + obj.Height - 1));
+
+                        selection.Add(X0, Y0, X1, Y1);
+                    }
+                }
+
+                #region cleanup
+                Throw(img, uimage, smoothedFrame);
+
+                CollectGarbage();
+                #endregion
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+
+                #region cleanup
+                CollectGarbage();
+                #endregion
+            }
         }
     }
 }

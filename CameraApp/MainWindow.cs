@@ -1419,7 +1419,7 @@ public partial class MainWindow : Gtk.Window
     {
         if (ControlsActive)
         {
-            Detect.Faces(
+            Detect.Haar(
                 opencv,
                 OriginalImage,
                 GtkSelection.Selection,
