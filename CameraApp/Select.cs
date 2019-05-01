@@ -141,6 +141,46 @@ public class Select
         }
     }
 
+    public void GetScore(int Region, out double score)
+    {
+        score = 0.0;
+
+        if (EllipseMode)
+        {
+            if (Region > 0 && Region <= Ellipses.Count)
+            {
+                score = Ellipses[Region - 1].Score;
+            }
+        }
+        else
+        {
+            if (Region > 0 && Region <= Boxes.Count)
+            {
+                score = Boxes[Region - 1].Score;
+            }
+        }
+    }
+
+    public void GetClass(int Region, out string className)
+    {
+        className = "";
+
+        if (EllipseMode)
+        {
+            if (Region > 0 && Region <= Ellipses.Count)
+            {
+                className = Ellipses[Region - 1].Class;
+            }
+        }
+        else
+        {
+            if (Region > 0 && Region <= Boxes.Count)
+            {
+                className = Boxes[Region - 1].Class;
+            }
+        }
+    }
+
     public void ReSize(int Region, int width, int height)
     {
         if (EllipseMode)
@@ -240,6 +280,21 @@ public class Select
         }
     }
 
+    void AddEllipse(int x0, int y0, int x1, int y1, double score, string className)
+    {
+        var a = Math.Abs(x0 - x1);
+        var b = Math.Abs(y0 - y1);
+        var x = Math.Min(x0, x1) + (a - 1) / 2;
+        var y = Math.Min(y0, y1) + (b - 1) / 2;
+
+        if (a > 2 && b > 2)
+        {
+            var ellipse = new Ellipse(x, y, a, b, score, className);
+
+            Ellipses.Add(ellipse);
+        }
+    }
+
     bool InBox(int x, int y, Box box)
     {
         return box.InBox(x, y);
@@ -296,12 +351,40 @@ public class Select
         }
     }
 
+    void AddBox(int x0, int y0, int x1, int y1, double score, string className)
+    {
+        var w = Math.Abs(x0 - x1);
+        var h = Math.Abs(y0 - y1);
+
+        var bx0 = Math.Min(x0, x1);
+        var by0 = Math.Min(y0, y1);
+        var bx1 = Math.Max(x0, x1);
+        var by1 = Math.Max(y0, y1);
+
+        if (w > 2 && h > 2)
+        {
+            var box = new Box(bx0, by0, bx1, by1, score, className);
+
+            Boxes.Add(box);
+        }
+    }
+
     public void Add(int X0, int Y0, int X1, int Y1)
     {
         if (EllipseMode)
             AddEllipse(X0, Y0, X1, Y1);
         else
             AddBox(X0, Y0, X1, Y1);
+
+        Update();
+    }
+
+    public void Add(int X0, int Y0, int X1, int Y1, double score, string className)
+    {
+        if (EllipseMode)
+            AddEllipse(X0, Y0, X1, Y1, score, className);
+        else
+            AddBox(X0, Y0, X1, Y1, score, className);
 
         Update();
     }

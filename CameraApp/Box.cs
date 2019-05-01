@@ -6,9 +6,18 @@ public class Box
 
     public bool Enabled;
 
+    public double Score;
+
+    public string Class;
+
     public Box(int x0, int y0, int x1, int y1)
     {
         Initialize(x0, y0, x1, y1, true);
+    }
+
+    public Box(int x0, int y0, int x1, int y1, double score, string className)
+    {
+        Initialize(x0, y0, x1, y1, score, className, true);
     }
 
     public Box(int x0, int y0, int x1, int y1, bool enabled)
@@ -22,6 +31,20 @@ public class Box
         Y0 = Math.Min(y0, y1);
         X1 = Math.Max(x0, x1);
         Y1 = Math.Max(y0, y1);
+
+        Enabled = enabled;
+    }
+
+    void Initialize(int x0, int y0, int x1, int y1, double score, string className, bool enabled)
+    {
+        X0 = Math.Min(x0, x1);
+        Y0 = Math.Min(y0, y1);
+        X1 = Math.Max(x0, x1);
+        Y1 = Math.Max(y0, y1);
+
+        Score = score;
+
+        Class = className;
 
         Enabled = enabled;
     }

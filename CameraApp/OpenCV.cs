@@ -1,5 +1,6 @@
 using Emgu.CV;
 using Emgu.CV.CvEnum;
+using Emgu.CV.Dpm;
 using Emgu.CV.Features2D;
 using Emgu.CV.Structure;
 using Emgu.CV.Util;
@@ -2077,6 +2078,76 @@ public class OpenCV : ImageProcessing, IDisposable
 
                 #region cleanup
                 Throw(img, uimage, smoothedFrame);
+
+                CollectGarbage();
+                #endregion
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e.Message);
+
+                #region cleanup
+                CollectGarbage();
+                #endregion
+            }
+        }
+    }
+
+    /// <summary>
+    /// Detect objects based on Deformable Parts Model
+    /// 
+    /// Saves coordinates of detected blobs in provided list
+    /// </summary>
+    /// 
+    /// <param name="src">Source OpenCV matrix</param>
+    /// <param name="DeformablePartsModelFile">File path of Deformable Parts Model (XML format)</param>
+    /// <param name="DeformablePartsModelThreshold">Detection threshold</param>
+    /// <param name="selection">List of regions</param>
+    /// <param name="Clear">Refresh region list</param>
+    /// <param name="ScaleX">X-axis scaling</param>
+    /// <param name="ScaleY">Y-axis scaling</param>
+    public void DeformablePartsModel(Mat src, string DeformablePartsModelFile, double DeformablePartsModelThreshold, Select selection, bool Clear, double ScaleX, double ScaleY)
+    {
+        if (src == null)
+            return;
+
+        if (File.Exists(DeformablePartsModelFile))
+        {
+            try
+            {
+                #region convert the image to grayscale
+                var img = src.ToImage<Bgr, byte>();
+                var uimage = ConvertToGray(img);
+                #endregion
+
+                var detector = new DpmDetector(new string[] { DeformablePartsModelFile });
+
+                if (!detector.IsEmpty)
+                {
+                    var objects = detector.Detect(uimage);
+
+                    if (Clear)
+                        selection.Clear();
+
+                    if (objects.Length > 0)
+                    {
+                        foreach (var obj in objects)
+                        {
+                            if (obj.Score >= DeformablePartsModelThreshold)
+                            {
+                                var X0 = Convert.ToInt32(ScaleX * (obj.Rect.Left));
+                                var Y0 = Convert.ToInt32(ScaleY * (obj.Rect.Top));
+                                var X1 = Convert.ToInt32(ScaleX * (obj.Rect.Left + obj.Rect.Width - 1));
+                                var Y1 = Convert.ToInt32(ScaleY * (obj.Rect.Top + obj.Rect.Height - 1));
+
+                                selection.Add(X0, Y0, X1, Y1, Convert.ToDouble(obj.Score), detector.ClassNames[obj.ClassId]);
+                            }
+                        }
+                    }
+                }
+
+                #region cleanup
+                Throw(img, uimage);
 
                 CollectGarbage();
                 #endregion

@@ -1,8 +1,6 @@
-using Emgu.CV;
 using Emgu.CV.Features2D;
-using Emgu.CV.Structure;
 using Gdk;
-using System;
+using System.Collections.Generic;
 
 public static class Detect
 {
@@ -20,6 +18,10 @@ public static class Detect
     public static int minSize = 10;
 
     public static string Classifier = "haarcascade_frontalface_default.xml";
+
+    public static string DeformablePartsModelFile = "person.xml";
+    public static double DeformablePartsModelThreshold;
+    public static List<string> DeformablePartsModels = new List<string>();
 
     public static int MarkerSize = 2;
 
@@ -124,6 +126,54 @@ public static class Detect
                     ScaleX,
                     ScaleY
                 );
+            }
+        }
+    }
+
+    public static void DeformablePartsModel(OpenCV cv, Pixbuf pixbuf, Select selection, double ScaleX, double ScaleY)
+    {
+        if (pixbuf != null)
+        {
+            using (var mat = cv.ToMat(pixbuf))
+            {
+                selection.Clear();
+
+                cv.DeformablePartsModel(
+                    mat,
+                    DeformablePartsModelFile,
+                    DeformablePartsModelThreshold,
+                    selection,
+                    true,
+                    ScaleX,
+                    ScaleY
+                );
+            }
+        }
+    }
+
+    public static void DetectDeformablePartsModels(OpenCV cv, Pixbuf pixbuf, Select selection, double ScaleX, double ScaleY)
+    {
+        if (pixbuf != null)
+        {
+            using (var mat = cv.ToMat(pixbuf))
+            {
+                selection.Clear();
+
+                if (DeformablePartsModels.Count > 0)
+                {
+                    foreach (var model in DeformablePartsModels)
+                    {
+                        cv.DeformablePartsModel(
+                            mat,
+                            model,
+                            DeformablePartsModelThreshold,
+                            selection,
+                            false,
+                            ScaleX,
+                            ScaleY
+                        );
+                    }
+                }
             }
         }
     }

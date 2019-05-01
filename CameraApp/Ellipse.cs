@@ -1,8 +1,8 @@
 public class Ellipse
 {
     /*
-     * Bivariate polynomial representation
-     */
+	 * Bivariate polynomial representation
+	 */
     public class Bivariate
     {
         public double A, B, C, D, E, F;
@@ -27,41 +27,50 @@ public class Ellipse
 
     public bool Enabled;
 
+    public double Score;
+
+    public string Class;
+
     /*
-     * Ellipse
-     * 
-     * x, y: origin
-     * width, height: size of bounding box
-     * rotation: rotation angle
-     */
+	 * Ellipse
+	 * 
+	 * x, y: origin
+	 * width, height: size of bounding box
+	 * rotation: rotation angle
+	 */
     public Ellipse(int x, int y, int width, int height, int rotation)
     {
         Initialize(x, y, width, height, rotation, true);
     }
 
     /*
-     * Ellipse
-     * 
-     * x, y: origin
-     * width, height: size of bounding box
-     * rotation: rotation angle
-     * enabled: flag whether visible or not
-     */
+	 * Ellipse
+	 * 
+	 * x, y: origin
+	 * width, height: size of bounding box
+	 * rotation: rotation angle
+	 * enabled: flag whether visible or not
+	 */
     public Ellipse(int x, int y, int width, int height, int rotation, bool enabled)
     {
         Initialize(x, y, width, height, rotation, enabled);
     }
 
     /*
-     * Ellipse
-     * 
-     * x, y: origin
-     * width, height: size of bounding box
-     * rotation: rotation angle, set to 0 to simplify computation
-     */
+	 * Ellipse
+	 * 
+	 * x, y: origin
+	 * width, height: size of bounding box
+	 * rotation: rotation angle, set to 0 to simplify computation
+	 */
     public Ellipse(int x, int y, int width, int height)
     {
         Initialize(x, y, width, height, 0, true);
+    }
+
+    public Ellipse(int x, int y, int width, int height, double score, string className)
+    {
+        Initialize(x, y, width, height, 0, score, className, true);
     }
 
     void Initialize(int x, int y, int width, int height, int rotation, bool enabled)
@@ -79,12 +88,31 @@ public class Ellipse
         Enabled = enabled;
     }
 
+    void Initialize(int x, int y, int width, int height, int rotation, double score, string className, bool enabled)
+    {
+        X = x;
+
+        Y = y;
+
+        Width = width;
+
+        Height = height;
+
+        Rotation = rotation;
+
+        Score = score;
+
+        Class = className;
+
+        Enabled = enabled;
+    }
+
     /*
-     * Is point (x, y) inside of the ellipse centered at (ex, ey)
-     * with diameters width and height, rotated by an angle whose
-     * cosine and sine are A and B?  Return true iff it's so.  See
-     * www.khanacademy.org/math/trigonometry/conics_precalc/ellipses-precalc/v/conic-sections--doublero-to-ellipses
-     */
+	 * Is point (x, y) inside of the ellipse centered at (ex, ey)
+	 * with diameters width and height, rotated by an angle whose
+	 * cosine and sine are A and B?  Return true iff it's so.  See
+	 * www.khanacademy.org/math/trigonometry/conics_precalc/ellipses-precalc/v/conic-sections--doublero-to-ellipses
+	 */
     bool InEllipse(int ex, int ey, int width, int height, int A, int B, int x, int y)
     {
         x -= ex;
@@ -97,35 +125,35 @@ public class Ellipse
     }
 
     /*
-     * Simplified wrapper to the InEllipse(ex, ey, width, height, A, B, x, y)
-     */
+	 * Simplified wrapper to the InEllipse(ex, ey, width, height, A, B, x, y)
+	 */
     public bool InEllipse(int x, int y)
     {
         return InEllipse(X, Y, Width, Height, 1, 0, x, y);
     }
 
     /*
-     * Express the traditional KA ellipse, rotated by an angle
-     * whose cosine and sine are A and B, in terms of a "bivariate"
-     * polynomial that sums to zero.  See
-     * http://elliotnoma.wordpress.com/2013/04/10/a-closed-form-solution-for-the-intersections-of-two-ellipses
-     */
+	 * Express the traditional KA ellipse, rotated by an angle
+	 * whose cosine and sine are A and B, in terms of a "bivariate"
+	 * polynomial that sums to zero.  See
+	 * http://elliotnoma.wordpress.com/2013/04/10/a-closed-form-solution-for-the-intersections-of-two-ellipses
+	 */
     Bivariate BivariateForm(int x, int y, int width, int height, int A, int B)
     {
         /*
-         * Start by rotating the ellipse center by the OPPOSITE
-         * of the desired angle.  That way when the bivariate
-         * computation transforms it back, it WILL be at the
-         * correct (and original) coordinates.
-         */
+		 * Start by rotating the ellipse center by the OPPOSITE
+		 * of the desired angle.  That way when the bivariate
+		 * computation transforms it back, it WILL be at the
+		 * correct (and original) coordinates.
+		 */
 
         var a = A * x + B * y;
         var c = -B * x + A * y;
 
         /*
-         * Now let the bivariate computation
-         * rotate in the opposite direction.
-         */
+		 * Now let the bivariate computation
+		 * rotate in the opposite direction.
+		 */
 
         B = -B;  /* A = cos(-rot); B = sin(-rot); */
 
@@ -144,13 +172,13 @@ public class Ellipse
     }
 
     /*
-     * Does the quartic function described by
-     * y = z4*x^4 + z3*x^3 + z2*x^2 + z1*x + z0 have *any*
-     * real solutions?  See
-     * http://en.wikipedia.org/wiki/Quartic_function
-     * Thanks to Dr. David Goldberg for the convertion to
-     * a depressed quartic!
-     */
+	 * Does the quartic function described by
+	 * y = z4*x^4 + z3*x^3 + z2*x^2 + z1*x + z0 have *any*
+	 * real solutions?  See
+	 * http://en.wikipedia.org/wiki/Quartic_function
+	 * Thanks to Dr. David Goldberg for the convertion to
+	 * a depressed quartic!
+	 */
     bool RealRoot(int z4, int z3, int z2, int z1, int z0)
     {
         /* First trivial checks for z0 or z4 being zero */
@@ -186,11 +214,11 @@ public class Ellipse
         var r = (-3 * a * a * a * a + 256 * d - 64 * c * a + 16 * a * a * b) / 256;
 
         /*
-        *   x^4 +        p*x^2 + q*x + r
-        * a*x^4 + b*x^3 + c*x^2 + d*x + e
-        * so a=1  b=0  c=p  d=q  e=r
-        * That is, we have a depessed quartic.
-        */
+		*   x^4 +        p*x^2 + q*x + r
+		* a*x^4 + b*x^3 + c*x^2 + d*x + e
+		* so a=1  b=0  c=p  d=q  e=r
+		* That is, we have a depessed quartic.
+		*/
         var descrim = 256 * r * r * r - 128 * p * p * r * r + 144 * p * q * q * r - 27 * q * q * q * q + 16 * p * p * p * p * r - 4 * p * p * p * q * q;
         var P = 8 * p;
         var D = 64 * r - 16 * p * p;
@@ -199,17 +227,17 @@ public class Ellipse
     }
 
     /*
-     * Is the Y coordinate(s) of the intersection of two conic
-     * sections real? They are in their bivariate form,
-     * ax²  + bxy  + cx²  + dx  + ey  + f = 0
-     * For now, a and a1 cannot be zero.
-     */
+	 * Is the Y coordinate(s) of the intersection of two conic
+	 * sections real? They are in their bivariate form,
+	 * ax²  + bxy  + cx²  + dx  + ey  + f = 0
+	 * For now, a and a1 cannot be zero.
+	 */
     bool YIntersect(double a, double b, double c, double d, double e, double f, double aa, double bb, double cc, double dd, double ee, double ff)
     {
         /*
-         * Normalize the conics by their first coefficient, a.
-         * Then get the differnce of the two equations.
-         */
+		 * Normalize the conics by their first coefficient, a.
+		 * Then get the differnce of the two equations.
+		 */
         bb /= aa;
         b /= a;
         cc /= aa;
@@ -249,13 +277,13 @@ public class Ellipse
     }
 
     /*
-     * Do two conics sections el and el1 intersect? Each are in
-     * bivariate form, ax^2  + bxy  + cx^2  + dx  + ey  + f = 0
-     * Solve by constructing a quartic that must have a real
-     * solution if they intersect.  This checks for real Y
-     * intersects, then flips the parameters around to check
-     * for real X intersects.
-     */
+	 * Do two conics sections el and el1 intersect? Each are in
+	 * bivariate form, ax^2  + bxy  + cx^2  + dx  + ey  + f = 0
+	 * Solve by constructing a quartic that must have a real
+	 * solution if they intersect.  This checks for real Y
+	 * intersects, then flips the parameters around to check
+	 * for real X intersects.
+	 */
     bool ConicsIntersect(Bivariate el, Bivariate el1)
     {
         /* check for real y intersects, then real x intersects */
@@ -263,12 +291,12 @@ public class Ellipse
     }
 
     /*
-    * Do two ellipses intersect?  The first ellipse is described
-    * in its "traditional" manner by the first four parameters,
-    * along with a rotation parameter, rot1.  Similarly, the last
-    * five parameters describe the second ellipse.  This (rather
-    * large) function can be copied to another program.
-    */
+	* Do two ellipses intersect?  The first ellipse is described
+	* in its "traditional" manner by the first four parameters,
+	* along with a rotation parameter, rot1.  Similarly, the last
+	* five parameters describe the second ellipse.  This (rather
+	* large) function can be copied to another program.
+	*/
     public bool EllipseIntersect(int x1, int y1, int width1, int height1, int x2, int y2, int width2, int height2)
     {
         /* realtive translation makes distance test simpler... */
@@ -301,16 +329,16 @@ public class Ellipse
         var elps2 = BivariateForm(x2, y2, width2, height2, A2, B2);
 
         /*
-        * Now, ask your good friend with a PhD in Mathematics how he
-        * would do it; then translate his R code.  See
-        * https://docs.google.com/file/d/0B7wsEy6bpVePSEt2Ql9hY0hFdjA/
-        */
+		* Now, ask your good friend with a PhD in Mathematics how he
+		* would do it; then translate his R code.  See
+		* https://docs.google.com/file/d/0B7wsEy6bpVePSEt2Ql9hY0hFdjA/
+		*/
         return ConicsIntersect(elps1, elps2);
     }
 
     /*
-     * Simplified wrapper to EllipseIntersect(x1, y1, width1, height1, x2, y2, width2, height2)
-     */
+	 * Simplified wrapper to EllipseIntersect(x1, y1, width1, height1, x2, y2, width2, height2)
+	 */
     public bool EllipseIntersect(Ellipse el)
     {
         return EllipseIntersect(X, Y, Width, Height, el.X, el.Y, el.Width, el.Height);
