@@ -373,7 +373,7 @@ public partial class MainWindow
 
 	private global::Gtk.Button selectClassifierButton;
 
-	private global::Gtk.Label FaceSettingsLabel;
+	private global::Gtk.Label HaarSettingsLabel;
 
 	private global::Gtk.Fixed markersLayout;
 
@@ -1035,7 +1035,7 @@ public partial class MainWindow
 		this.patternNotebook.HeightRequest = 130;
 		this.patternNotebook.CanFocus = true;
 		this.patternNotebook.Name = "patternNotebook";
-		this.patternNotebook.CurrentPage = 5;
+		this.patternNotebook.CurrentPage = 0;
 		// Container child patternNotebook.Gtk.Notebook+NotebookChild
 		this.crossLayout = new global::Gtk.Fixed();
 		this.crossLayout.Name = "crossLayout";
@@ -2254,11 +2254,11 @@ public partial class MainWindow
 		global::Gtk.Notebook.NotebookChild w170 = ((global::Gtk.Notebook.NotebookChild)(this.DetectLayout[this.faceLayout]));
 		w170.Position = 3;
 		// Notebook tab
-		this.FaceSettingsLabel = new global::Gtk.Label();
-		this.FaceSettingsLabel.Name = "FaceSettingsLabel";
-		this.FaceSettingsLabel.LabelProp = global::Mono.Unix.Catalog.GetString("Face");
-		this.DetectLayout.SetTabLabel(this.faceLayout, this.FaceSettingsLabel);
-		this.FaceSettingsLabel.ShowAll();
+		this.HaarSettingsLabel = new global::Gtk.Label();
+		this.HaarSettingsLabel.Name = "HaarSettingsLabel";
+		this.HaarSettingsLabel.LabelProp = global::Mono.Unix.Catalog.GetString("HAAR");
+		this.DetectLayout.SetTabLabel(this.faceLayout, this.HaarSettingsLabel);
+		this.HaarSettingsLabel.ShowAll();
 		// Container child DetectLayout.Gtk.Notebook+NotebookChild
 		this.markersLayout = new global::Gtk.Fixed();
 		this.markersLayout.Name = "markersLayout";

@@ -822,7 +822,7 @@
                     <property name="WidthRequest">640</property>
                     <property name="HeightRequest">130</property>
                     <property name="CanFocus">True</property>
-                    <property name="CurrentPage">5</property>
+                    <property name="CurrentPage">0</property>
                     <signal name="SwitchPage" handler="OnPatternNotebookSwitchPage" />
                     <child>
                       <widget class="Gtk.Fixed" id="crossLayout">
@@ -2486,9 +2486,9 @@
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.Label" id="FaceSettingsLabel">
+                      <widget class="Gtk.Label" id="HaarSettingsLabel">
                         <property name="MemberName" />
-                        <property name="LabelProp" translatable="yes">Face</property>
+                        <property name="LabelProp" translatable="yes">HAAR</property>
                       </widget>
                       <packing>
                         <property name="type">tab</property>
