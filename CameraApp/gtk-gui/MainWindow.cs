@@ -315,7 +315,7 @@ public partial class MainWindow
 
 	private global::Gtk.Button saveBlobsButton;
 
-	private global::Gtk.Button facesButton;
+	private global::Gtk.Button objectsButton;
 
 	private global::Gtk.Label DetectLabel;
 
@@ -417,7 +417,7 @@ public partial class MainWindow
 		this.HeightRequest = 768;
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString("MainWindow");
-		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
+		this.WindowPosition = ((global::Gtk.WindowPosition)(3));
 		this.Resizable = false;
 		this.AllowGrow = false;
 		this.DefaultWidth = 1024;
@@ -1983,13 +1983,13 @@ public partial class MainWindow
 		w143.X = 270;
 		w143.Y = 5;
 		// Container child detectLayout.Gtk.Fixed+FixedChild
-		this.facesButton = new global::Gtk.Button();
-		this.facesButton.Name = "facesButton";
-		this.facesButton.UseUnderline = true;
-		this.facesButton.FocusOnClick = false;
-		this.facesButton.Label = global::Mono.Unix.Catalog.GetString("Faces");
-		this.detectLayout.Add(this.facesButton);
-		global::Gtk.Fixed.FixedChild w144 = ((global::Gtk.Fixed.FixedChild)(this.detectLayout[this.facesButton]));
+		this.objectsButton = new global::Gtk.Button();
+		this.objectsButton.Name = "objectsButton";
+		this.objectsButton.UseUnderline = true;
+		this.objectsButton.FocusOnClick = false;
+		this.objectsButton.Label = global::Mono.Unix.Catalog.GetString("HAAR");
+		this.detectLayout.Add(this.objectsButton);
+		global::Gtk.Fixed.FixedChild w144 = ((global::Gtk.Fixed.FixedChild)(this.detectLayout[this.objectsButton]));
 		w144.X = 180;
 		w144.Y = 5;
 		this.DetectLayout.Add(this.detectLayout);
@@ -2513,7 +2513,7 @@ public partial class MainWindow
 		this.simpleBlobsButton.Clicked += new global::System.EventHandler(this.OnSimpleBlobsButtonClicked);
 		this.saveProcessedImageButton.Clicked += new global::System.EventHandler(this.OnSaveProcessedImageButtonClicked);
 		this.saveBlobsButton.Clicked += new global::System.EventHandler(this.OnSaveBlobsButtonClicked);
-		this.facesButton.Clicked += new global::System.EventHandler(this.OnFacesButtonClicked);
+		this.objectsButton.Clicked += new global::System.EventHandler(this.OnObjectsDetectButton);
 		this.DownUpSample.Toggled += new global::System.EventHandler(this.UpdateDetectorSettings);
 		this.InvertGray.Toggled += new global::System.EventHandler(this.UpdateDetectorSettings);
 		this.SubtractBackground.Toggled += new global::System.EventHandler(this.UpdateDetectorSettings);

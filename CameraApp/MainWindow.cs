@@ -1415,7 +1415,7 @@ public partial class MainWindow : Gtk.Window
         }
     }
 
-    protected void OnFacesButtonClicked(object sender, EventArgs e)
+    protected void OnObjectsDetectButton(object sender, EventArgs e)
     {
         if (ControlsActive)
         {
