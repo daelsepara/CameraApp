@@ -2120,7 +2120,11 @@ public class OpenCV : ImageProcessing, IDisposable
                 var uimage = ConvertToGray(img);
                 #endregion
 
-                var detector = new DpmDetector(new string[] { DeformablePartsModelFile });
+                #if _LINUX
+                    var detector = new DpmDetector(new string[] { DeformablePartsModelFile });
+                #else
+                    var detector = DpmDetector.Create(new string[] { DeformablePartsModelFile, new string[] {Path.GetFileNameWithoutExtension(DeformablePartsModelFile) }});
+                #endif
 
                 if (!detector.IsEmpty)
                 {
@@ -2146,19 +2150,19 @@ public class OpenCV : ImageProcessing, IDisposable
                     }
                 }
 
-                #region cleanup
+#region cleanup
                 Throw(img, uimage);
 
                 CollectGarbage();
-                #endregion
+#endregion
             }
             catch (Exception e)
             {
                 Console.WriteLine("Error: {0}", e.Message);
 
-                #region cleanup
+#region cleanup
                 CollectGarbage();
-                #endregion
+#endregion
             }
         }
     }
