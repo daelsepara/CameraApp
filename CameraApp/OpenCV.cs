@@ -2120,7 +2120,7 @@ public class OpenCV : ImageProcessing, IDisposable
                 var uimage = ConvertToGray(img);
                 #endregion
 
-                var detector = new DpmDetector(new string[] { DeformablePartsModelFile });
+                var detector = DpmDetector.Create(new string[] { DeformablePartsModelFile }, new string[] { Path.GetFileNameWithoutExtension(DeformablePartsModelFile) });
 
                 if (!detector.IsEmpty)
                 {
