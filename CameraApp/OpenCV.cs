@@ -2123,7 +2123,7 @@ public class OpenCV : ImageProcessing, IDisposable
                 #if _LINUX
                     var detector = new DpmDetector(new string[] { DeformablePartsModelFile });
                 #else
-                    var detector = DpmDetector.Create(new string[] { DeformablePartsModelFile, new string[] {Path.GetFileNameWithoutExtension(DeformablePartsModelFile) }});
+                    var detector = DpmDetector.Create(new string[] { DeformablePartsModelFile }, new string[] { Path.GetFileNameWithoutExtension(DeformablePartsModelFile) });
                 #endif
 
                 if (!detector.IsEmpty)
